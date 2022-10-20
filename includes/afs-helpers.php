@@ -1,6 +1,6 @@
 <?php
 
-/*-----------------------------BKB AJAX Settings ----------------------------------*/
+/*-- AJAX Settings--*/
 
 if (!function_exists('afs_set_custom_js_param')) {
 
@@ -118,16 +118,16 @@ function afs_get_sticky_items()
 add_action('wp_footer', 'afs_get_sticky_items', 1);
 
 
-/*-------------------------Clean Up Shortcode--------------------------------------*/
+/*--Clean Up Shortcode--*/
 
 
 function afs_clean_shortcodes($content)
 {
-    $array = array(
+    $array = [
         '<p>[' => '[',
         ']</p>' => ']',
         ']<br />' => ']'
-    );
+    ];
     $content = strtr($content, $array);
     return $content;
 }

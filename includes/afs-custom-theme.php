@@ -13,10 +13,9 @@ if (!function_exists('afs_custom_theme')) {
         $afs_sugg_box_text_color = "#FFFFFF";
         $afs_sugg_box_text_hover_color = "#F3F3F3";
 
-
         $afs_custom_theme = '<style type="text/css">';
 
-        /*------------------------------ RTL Support For Search Section ---------------------------------*/
+        /*-- RTL Support For Search Section --*/
 
         if (is_rtl()) {
             //Write all custom codes for RTL in here.
@@ -34,7 +33,7 @@ if (!function_exists('afs_custom_theme')) {
 
         $afs_custom_theme .= 'ul.afs-sticky li{ background: ' . $afs_sticky_container_bg . ';}';
 
-        /*------------------------------  Suggestion Box Background Color ---------------------------------*/
+        /*--  Suggestion Box Background Color --*/
 
         if (isset($afs_options['afs_sugg_box_container_bg']) && $afs_options['afs_sugg_box_container_bg'] != "") {
 
@@ -45,7 +44,7 @@ if (!function_exists('afs_custom_theme')) {
         $afs_custom_theme .= 'div.suggestionList:before{ border-bottom: 7px solid ' . $afs_sugg_box_container_bg . ' !important;}';
 
 
-        /*------------------------------  Suggestion Box Text Color ---------------------------------*/
+        /*--  Suggestion Box Text Color --*/
 
         if (isset($afs_options['afs_sugg_box_text_color']) && $afs_options['afs_sugg_box_text_color'] != "") {
 

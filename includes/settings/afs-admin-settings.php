@@ -270,7 +270,7 @@ function afs_search_window_in_settings()
 
     $afs_animation_string .= '<option value="" "selected=selected"> ' . esc_html__('Select', 'afs-addon') . ' </option>';
 
-    $afs_in_animation = array(
+    $afs_in_animation = [
         'bounce' => 'bounce',
         'bounceIn' => 'bounce In',
         'bounceInDown' => 'bounce In Down',
@@ -306,7 +306,7 @@ function afs_search_window_in_settings()
         'zoomInUp' => 'zoom In Up',
         'hinge' => 'hinge',
         'rollIn' => 'roll In'
-    );
+    ];
 
 
     foreach ($afs_in_animation as $afs_animation_key => $afs_animation_value) :
@@ -352,7 +352,7 @@ function afs_search_window_out_settings()
 
     $afs_animation_string .= '<option value="" "selected=selected"> ' . esc_html__('Select', 'afs-addon') . ' </option>';
 
-    $afs_out_animation = array(
+    $afs_out_animation = [
         'bounce' => 'bounce',
         'bounceOut' => 'bounce Out',
         'bounceOutDown' => 'bounce Out Down',
@@ -388,7 +388,7 @@ function afs_search_window_out_settings()
         'zoomOutUp' => 'zoom Out Up',
         'hinge' => 'hinge',
         'rollOut' => 'rollOut'
-    );
+    ];
 
 
     foreach ($afs_out_animation as $afs_animation_key => $afs_animation_value) :

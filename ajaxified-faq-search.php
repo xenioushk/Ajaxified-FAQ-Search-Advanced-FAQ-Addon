@@ -22,17 +22,16 @@ class BAF_AFS_Manager
         // If plugin is not compatible then display a notice in admin panel.
         if ($baf_afs_compatibily_status == 0 && is_admin()) {
 
-            add_action('admin_notices', array($this, 'baf_afs_requirement_admin_notices'));
+            add_action('admin_notices', [$this, 'baf_afs_requirement_admin_notices']);
         }
 
         //If plugin is compatible then load all require files.
-
         if ($baf_afs_compatibily_status == 1) {
 
             define("AFS_PLUGIN_VERSION", '1.0.7');
             $this->included_files();
-            add_action('wp_enqueue_scripts', array(&$this, 'afs_enqueue_plugin_scripts'));
-            add_action('admin_enqueue_scripts', array(&$this, 'afs_admin_enqueue_plugin_scripts'));
+            add_action('wp_enqueue_scripts', [&$this, 'afs_enqueue_plugin_scripts']);
+            add_action('admin_enqueue_scripts', [&$this, 'afs_admin_enqueue_plugin_scripts']);
             $this->plugin_name_load_plugin_textdomain();
         }
     }
@@ -95,27 +94,23 @@ class BAF_AFS_Manager
     function afs_enqueue_plugin_scripts()
     {
 
-        wp_enqueue_style('afs-popup-styles', plugins_url('css/jquery.simple-popup.css', __FILE__), array(), AFS_PLUGIN_VERSION);
-        wp_enqueue_style('afs-animate-styles', plugins_url('css/animate.min.css', __FILE__), array(), AFS_PLUGIN_VERSION);
-        wp_enqueue_style('afs-custom-styles', plugins_url('css/afs-custom-styles.css', __FILE__), array(), AFS_PLUGIN_VERSION);
+        wp_enqueue_style('afs-popup-styles', plugins_url('css/jquery.simple-popup.css', __FILE__), [], AFS_PLUGIN_VERSION);
+        wp_enqueue_style('afs-animate-styles', plugins_url('css/animate.min.css', __FILE__), [], AFS_PLUGIN_VERSION);
+        wp_enqueue_style('afs-custom-styles', plugins_url('css/afs-custom-styles.css', __FILE__), [], AFS_PLUGIN_VERSION);
 
         if (is_rtl()) {
-
-            wp_register_style('afs-rtl-style', plugin_dir_url(__FILE__) . 'css/afs-rtl-styles.css', array(), AFS_PLUGIN_VERSION);
+            wp_register_style('afs-rtl-style', plugin_dir_url(__FILE__) . 'css/afs-rtl-styles.css', [], AFS_PLUGIN_VERSION);
             wp_enqueue_style('afs-rtl-style');
         }
 
-
-
-
-        wp_register_script('afs-custom-search-script', plugins_url('js/afs-search-scripts.js', __FILE__), array('jquery', 'baf_pagination'), AFS_PLUGIN_VERSION, TRUE);
-        wp_register_script('afs-animate-script', plugins_url('js/animatedModal.min.js', __FILE__), array('jquery'), AFS_PLUGIN_VERSION, TRUE);
-        wp_register_script('afs-custom-script', plugins_url('js/afs-custom.js', __FILE__), array('jquery', 'afs-animate-script'), AFS_PLUGIN_VERSION, TRUE);
+        wp_register_script('afs-custom-search-script', plugins_url('js/afs-search-scripts.js', __FILE__), ['jquery', 'baf_pagination'], AFS_PLUGIN_VERSION, TRUE);
+        wp_register_script('afs-animate-script', plugins_url('js/animatedModal.min.js', __FILE__), ['jquery'], AFS_PLUGIN_VERSION, TRUE);
+        wp_register_script('afs-custom-script', plugins_url('js/afs-custom.js', __FILE__), ['jquery', 'afs-animate-script'], AFS_PLUGIN_VERSION, TRUE);
     }
 
     function afs_admin_enqueue_plugin_scripts()
     {
-        wp_register_script('afs-admin-custom-script', plugins_url('js/afs-admin-custom.js', __FILE__), array('jquery', 'wp-color-picker'), AFS_PLUGIN_VERSION, TRUE);
+        wp_register_script('afs-admin-custom-script', plugins_url('js/afs-admin-custom.js', __FILE__), ['jquery', 'wp-color-picker'], AFS_PLUGIN_VERSION, TRUE);
         wp_enqueue_script('afs-admin-custom-script');
     }
 }

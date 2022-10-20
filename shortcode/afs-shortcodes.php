@@ -6,10 +6,10 @@ function afs_live_search_field($atts)
 {
 
     // Introduced in version 1.0.1
-    $atts = shortcode_atts(array(
+    $atts = shortcode_atts([
         'sugg_box' => 0,
         'placeholder' => esc_html__('Search Keywords (how to, what is )..... ', 'afs-addon')
-    ), $atts);
+    ], $atts);
 
     extract($atts);
 

@@ -138,13 +138,13 @@ function afs_get_search_results()
             $pageposts = $wpdb->get_results($querystr, OBJECT);
         } else {
 
-            $args = array(
+            $args = [
                 's' => trim($s),
                 'post_type' => 'bwl_advanced_faq',
                 'post_status' => 'publish',
                 'posts_per_page' => $limit,
                 'orderby' => $orderby
-            );
+            ];
 
             $query = new WP_Query($args);
             $pageposts = $query->posts;
@@ -152,7 +152,7 @@ function afs_get_search_results()
 
         if (isset($_POST['output_format']) && $_POST['output_format'] == 'JSON') {
 
-            $output = array();
+            $output = [];
             $counter = 0;
             foreach ($pageposts as $k => $v) {
 
