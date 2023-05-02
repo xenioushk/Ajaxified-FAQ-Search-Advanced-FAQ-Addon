@@ -103,7 +103,7 @@ class BAF_AFS_Manager
             wp_enqueue_style('afs-rtl-style');
         }
 
-        wp_register_script('afs-custom-search-script', plugins_url('js/afs-search-scripts.js', __FILE__), ['jquery', 'baf_pagination'], AFS_PLUGIN_VERSION, TRUE);
+        wp_register_script('afs-custom-search-script', plugins_url('js/afs-search-scripts.js', __FILE__), ['jquery', 'baf-new-scripts'], AFS_PLUGIN_VERSION, TRUE);
         wp_register_script('afs-animate-script', plugins_url('js/animatedModal.min.js', __FILE__), ['jquery'], AFS_PLUGIN_VERSION, TRUE);
         wp_register_script('afs-custom-script', plugins_url('js/afs-custom.js', __FILE__), ['jquery', 'afs-animate-script'], AFS_PLUGIN_VERSION, TRUE);
     }
