@@ -228,7 +228,7 @@
                  - links to specific pages
                  - link to next page
                  */
-        var navigation_html = '<div class="baf_page_num"><a class="previous_link" href="#">&laquo;</a>'
+        var navigation_html = '<div class="baf_page_num"><a class="previous_link" href="#"><i class="fa fa-chevron-left"></i></a>'
         var current_link = 0
 
         var page_array = []
@@ -249,7 +249,7 @@
           baf_pages_string = string_plural_page
         }
 
-        navigation_html += '<a class="next_link" href="#">&raquo;</a></div><div class="total_pages">' + string_total + " " + number_of_pages + " " + baf_pages_string + "</div>"
+        navigation_html += '<a class="next_link" href="#"><i class="fa fa-chevron-right"></i></a></div><div class="total_pages">' + string_total + " " + number_of_pages + " " + baf_pages_string + "</div>"
 
         $baf_section.find("#baf_page_navigation").html("").html(navigation_html)
 

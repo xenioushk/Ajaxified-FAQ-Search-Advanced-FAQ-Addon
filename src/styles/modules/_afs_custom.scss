@@ -6,7 +6,7 @@
 */
 
 form.afs-live-search-form {
-  margin-bottom: 24px;
+  margin-bottom: 0px;
   position: relative;
 }
 
@@ -21,9 +21,7 @@ form.afs-live-search-form #s {
   border-radius: 0px;
   border: 1px solid lightgray;
   height: 48px;
-  /*line-height: 3em;*/
   text-indent: 5px;
-  /*font-size: 12px;*/
 }
 
 .afs-dn {
@@ -33,9 +31,10 @@ form.afs-live-search-form #s {
 span.afs-btn-clear {
   position: absolute;
   top: 3px;
+  right: 10px !important;
   width: 30px;
-  height: 2.5em;
-  line-height: 2.5em;
+  height: 2em;
+  line-height: 2em;
   text-align: center;
   background: #ffffff;
   cursor: pointer;
@@ -52,21 +51,13 @@ span.afs-btn-clear:after {
   color: #6a6a6a;
   font-family: verdana;
   -webkit-transition: all 0.5s ease-out;
-  -moz-transition: all 0.5s ease-out;
-  -o-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
   -webkit-transform: rotateY(0deg);
-  -moz-transform: rotateY(0deg);
-  -ms-transform: rotateY(0deg);
-  -o-transform: rotateY(0deg);
   transform: rotateY(0deg);
 }
 
 span.afs-btn-clear:hover:after {
   -webkit-transform: rotateY(360deg);
-  -moz-transform: rotateY(360deg);
-  -ms-transform: rotateY(360deg);
-  -o-transform: rotateY(360deg);
   transform: rotateY(360deg);
 }
 
@@ -106,10 +97,6 @@ input.afs_loading {
   background-position-x: 99%;
   background-position-y: 50%;
 }
-
-/*#suggest {
-    position:relative;
-}  */
 
 /*------------------------------  Suggestion Box ---------------------------------*/
 
@@ -184,9 +171,7 @@ div.suggestionList ul li a:visited {
   transition: all 0.5s ease-in-out;
   cursor: pointer;
   overflow: hidden;
-  -moz-border-radius: 4px 0 0px 4px;
   -webkit-border-radius: 4px 0 0px 4px;
-  -o-border-radius: 4px 0 0px 4px;
   border-radius: 4px 0 0px 4px;
 }
 
@@ -194,8 +179,6 @@ div.suggestionList ul li a:visited {
   color: #ffffff;
   font-weight: bold;
   -webkit-transition: all 3s ease-in-out;
-  -moz-transition: all 3s ease-in-out;
-  -o-transition: all 3s ease-in-out;
   transition: all 3s ease-in-out;
   text-decoration: none;
   display: block;
@@ -211,8 +194,6 @@ div.suggestionList ul li a:visited {
   font-size: 12px;
   padding-left: 4px;
   -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
 }
 
@@ -232,19 +213,19 @@ div#asf_animated_modal section {
 
 div.modal-content {
   margin-top: 12px;
-  padding: 0 6px;
+  padding: 12px;
 }
 
 div#btn-close-modal {
   width: 24px;
   height: 24px;
-  line-height: 24px;
+  line-height: 14px;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
   color: #2c2c2c;
   margin: 5px auto 0 auto;
-  font-size: 18px;
+  font-size: 14px;
   background: #ffffff;
   border-radius: 100%;
   padding: 5px;
@@ -259,28 +240,4 @@ div.afs-nothing-found {
 
 div.afs-baf-ctrl-btn {
   margin-bottom: 12px !important;
-}
-
-/* Smaller than 1200 (devices and browsers) */
-@media only screen and (max-width: 1199px) {
-}
-
-/* Smaller than standard 960 (devices and browsers) */
-@media only screen and (max-width: 959px) {
-}
-
-/* Tablet Portrait size to standard 960 (devices and browsers) */
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-}
-
-/* All Mobile Sizes (devices and browser) */
-@media only screen and (max-width: 767px) {
-}
-
-/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-}
-
-/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-@media only screen and (max-width: 479px) {
 }

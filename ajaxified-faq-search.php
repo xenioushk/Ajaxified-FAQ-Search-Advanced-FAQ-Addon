@@ -94,7 +94,7 @@ class BAF_AFS_Manager
     function afs_enqueue_plugin_scripts()
     {
 
-        wp_enqueue_style('afs-simple-popup', plugins_url('libs/jquery.simple.popup/styles/jquery.simple-popup.css', __FILE__), [], AFS_PLUGIN_VERSION);
+        wp_enqueue_style('afs-simple-popup', plugins_url('libs/jquery.simple.popup/styles/popup.css', __FILE__), [], AFS_PLUGIN_VERSION);
         wp_enqueue_style('afs-animate', plugins_url('libs/animate/styles/animate.min.css', __FILE__), [], AFS_PLUGIN_VERSION);
         wp_enqueue_style('afs-frontend', plugins_url('assets/styles/frontend.css', __FILE__), [], AFS_PLUGIN_VERSION);
 
