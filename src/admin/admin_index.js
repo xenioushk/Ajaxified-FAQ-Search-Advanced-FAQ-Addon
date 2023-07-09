@@ -3,3 +3,4 @@
 
 // Load JavaScripts
 import "./modules/admin.js"
+import "./modules/installation_counter.js"
