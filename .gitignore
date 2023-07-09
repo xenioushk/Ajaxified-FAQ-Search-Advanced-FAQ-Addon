@@ -1,7 +1,7 @@
 node_modules
 vendor
 tests
-package-lock.json
+assets
 composer.lock
 *.map
 *.hot-update.js

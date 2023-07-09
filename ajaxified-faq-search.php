@@ -5,7 +5,7 @@
  * Plugin URI: https://bluewindlab.net
  * Description: The Ajaxified FAQ Search is an add-on specifically designed for the BWL Advanced FAQ Manager plugin. This add-on enhances the functionality of the FAQ Manager by introducing a quick and efficient way to search for frequently asked questions.
  * Author: Md Mahbub Alam Khan
- * Version: 1.0.9
+ * Version: 1.1.0
  * Author URI: https://bluewindlab.net
  * WP Requires at least: 5.6+
  * Text Domain: afs-addon
@@ -85,7 +85,7 @@ class BAF_AFS_Manager
 
             include_once dirname(__FILE__) . '/includes/afs-custom-theme.php';
             include_once dirname(__FILE__) . '/includes/afs-helpers.php';
-            include_once dirname(__FILE__) . '/shortcode/afs-shortcodes.php';
+            include_once dirname(__FILE__) . '/includes/shortcode/afs-shortcodes.php';
         }
 
         include_once dirname(__FILE__) . '/includes/afs-ajax-search.php';
@@ -94,24 +94,21 @@ class BAF_AFS_Manager
     function afs_enqueue_plugin_scripts()
     {
 
-        wp_enqueue_style('afs-popup-styles', plugins_url('css/jquery.simple-popup.css', __FILE__), [], AFS_PLUGIN_VERSION);
-        wp_enqueue_style('afs-animate-styles', plugins_url('css/animate.min.css', __FILE__), [], AFS_PLUGIN_VERSION);
-        wp_enqueue_style('afs-custom-styles', plugins_url('css/afs-custom-styles.css', __FILE__), [], AFS_PLUGIN_VERSION);
+        wp_enqueue_style('afs-simple-popup', plugins_url('libs/jquery.simple.popup/styles/jquery.simple-popup.css', __FILE__), [], AFS_PLUGIN_VERSION);
+        wp_enqueue_style('afs-animate', plugins_url('libs/animate/styles/animate.min.css', __FILE__), [], AFS_PLUGIN_VERSION);
+        wp_enqueue_style('afs-frontend', plugins_url('assets/styles/frontend.css', __FILE__), [], AFS_PLUGIN_VERSION);
 
         if (is_rtl()) {
-            wp_register_style('afs-rtl-style', plugin_dir_url(__FILE__) . 'css/afs-rtl-styles.css', [], AFS_PLUGIN_VERSION);
-            wp_enqueue_style('afs-rtl-style');
+            wp_enqueue_style('afs-frontend-rtl', plugins_url('assets/styles/frontend_rtl.css', __FILE__), [], AFS_PLUGIN_VERSION);
         }
 
-        wp_register_script('afs-custom-search-script', plugins_url('js/afs-search-scripts.js', __FILE__), ['jquery', 'baf-new-scripts'], AFS_PLUGIN_VERSION, TRUE);
-        wp_register_script('afs-animate-script', plugins_url('js/animatedModal.min.js', __FILE__), ['jquery'], AFS_PLUGIN_VERSION, TRUE);
-        wp_register_script('afs-custom-script', plugins_url('js/afs-custom.js', __FILE__), ['jquery', 'afs-animate-script'], AFS_PLUGIN_VERSION, TRUE);
+        wp_register_script('afs-animate-modal', plugins_url('libs/animated.modal/scripts/animatedModal.min.js', __FILE__), ['jquery'], AFS_PLUGIN_VERSION, TRUE);
+        wp_enqueue_script('afs-frontend', plugins_url('assets/scripts/frontend.js', __FILE__), ['jquery', 'afs-animate-modal'], AFS_PLUGIN_VERSION, TRUE);
     }
 
     function afs_admin_enqueue_plugin_scripts()
     {
-        wp_register_script('afs-admin-custom-script', plugins_url('js/afs-admin-custom.js', __FILE__), ['jquery', 'wp-color-picker'], AFS_PLUGIN_VERSION, TRUE);
-        wp_enqueue_script('afs-admin-custom-script');
+        wp_register_script('afs-admin', plugins_url('assets/scripts/admin.js', __FILE__), ['jquery', 'wp-color-picker'], AFS_PLUGIN_VERSION, TRUE);
     }
 }
 

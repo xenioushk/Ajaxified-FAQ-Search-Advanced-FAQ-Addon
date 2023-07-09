@@ -21,8 +21,6 @@ function afs_live_search_field($atts)
         $afs_suggestion_box = 0; // Will pick this value dynamically from option panel. Default is 0.
     }
 
-    wp_enqueue_script('afs-custom-search-script'); // Loading Search Scripts.
-
     $afs_live_search_html = "";
 
     $search_box_unique_id = wp_rand();

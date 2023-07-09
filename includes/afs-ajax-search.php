@@ -274,7 +274,6 @@ function get_html_faq_interface($unique_faq_container_id, $post_id, $title, $con
 
     $bwl_advanced_faq_show_date_time_interface = "<span class='fa fa-calendar'></span> " . get_the_date('', $post_id) . " &nbsp;";
 
-    //            
     if ($bwl_advanced_faq_meta_info_status == 1) {
 
         $bwl_advanced_faq_meta_info = "<p class='bwl_meta_info'>" . $bwl_advanced_faq_author_info_interface . $bwl_advanced_faq_show_date_time_interface . "</p>";
