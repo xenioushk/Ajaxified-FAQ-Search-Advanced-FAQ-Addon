@@ -11,11 +11,6 @@ stages:
   - production
 
 before_script:
-  # - echo $CI_RUNNER_ID
-  # - echo $CI_RUNNER_REVISION
-  # - echo $CI_RUNNER_SHORT_TOKEN
-  # - echo $CI_RUNNER_TAGS
-  # - echo $CI_RUNNER_VERSION
   - sudo apt-get install -y lftp && sudo apt-get install -y npm && sudo apt-get install -y curl
 
 build:
