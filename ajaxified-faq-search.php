@@ -117,8 +117,8 @@ class BAF_AFS_Manager
             'afs-admin',
             'BafAfsAdminData',
             [
-                'product_id' => 5007135,
-                'installation' => get_option('baf_installation')
+                'product_id' => 12033214,
+                'installation' => get_option('baf_afs_installation')
             ]
         );
     }
