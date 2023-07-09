@@ -32,13 +32,13 @@ if (!function_exists('afs_set_custom_js_param')) {
 ?>
 
 
-        <script type="text/javascript">
-            var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>',
-                afs_search_window_color = '<?php echo $afs_search_window_color; ?>',
-                afs_window_in_animation = '<?php echo $afs_window_in_animation; ?>',
-                afs_window_out_animation = '<?php echo $afs_window_out_animation; ?>',
-                afs_search_no_results_msg = '<?php esc_html_e('Sorry Nothing Found!', 'afs-addon'); ?>';
-        </script>
+<script type="text/javascript">
+var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>',
+  afs_search_window_color = '<?php echo $afs_search_window_color; ?>',
+  afs_window_in_animation = '<?php echo $afs_window_in_animation; ?>',
+  afs_window_out_animation = '<?php echo $afs_window_out_animation; ?>',
+  afs_search_no_results_msg = '<?php esc_html_e('Sorry Nothing Found!', 'afs-addon'); ?>';
+</script>
 
 <?php
 
