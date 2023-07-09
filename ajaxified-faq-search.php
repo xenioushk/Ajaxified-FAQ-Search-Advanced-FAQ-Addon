@@ -28,7 +28,8 @@ class BAF_AFS_Manager
         //If plugin is compatible then load all require files.
         if ($baf_afs_compatibily_status == 1) {
 
-            define("AFS_PLUGIN_VERSION", '1.0.9');
+            define("AFS_PLUGIN_VERSION", '1.1.0');
+            define("AFS_PLUGIN_UPDATER_SLUG", plugin_basename(__FILE__)); // change plugin current version in here.
             $this->included_files();
             add_action('wp_enqueue_scripts', [&$this, 'afs_enqueue_plugin_scripts']);
             add_action('admin_enqueue_scripts', [&$this, 'afs_admin_enqueue_plugin_scripts']);
@@ -80,7 +81,9 @@ class BAF_AFS_Manager
         if (is_admin()) {
 
             include_once dirname(__FILE__) . '/includes/settings/afs-admin-settings.php'; // Load plugins option panel.
-
+            require_once(__DIR__ . '/includes/autoupdater/WpAutoUpdater.php');
+            require_once(__DIR__ . '/includes/autoupdater/installer.php');
+            require_once(__DIR__ . '/includes/autoupdater/updater.php');
         } else {
 
             include_once dirname(__FILE__) . '/includes/afs-custom-theme.php';
@@ -109,6 +112,15 @@ class BAF_AFS_Manager
     function afs_admin_enqueue_plugin_scripts()
     {
         wp_register_script('afs-admin', plugins_url('assets/scripts/admin.js', __FILE__), ['jquery', 'wp-color-picker'], AFS_PLUGIN_VERSION, TRUE);
+
+        wp_localize_script(
+            'afs-admin',
+            'BafAfsAdminData',
+            [
+                'product_id' => 5007135,
+                'installation' => get_option('baf_installation')
+            ]
+        );
     }
 }
 
