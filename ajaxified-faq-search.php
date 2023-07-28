@@ -5,7 +5,7 @@
  * Plugin URI: https://bluewindlab.net
  * Description: The Ajaxified FAQ Search is an add-on specifically designed for the BWL Advanced FAQ Manager plugin. This add-on enhances the functionality of the FAQ Manager by introducing a quick and efficient way to search for frequently asked questions.
  * Author: Md Mahbub Alam Khan
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author URI: https://bluewindlab.net
  * WP Requires at least: 5.6+
  * Text Domain: afs-addon
@@ -28,10 +28,10 @@ class BAF_AFS_Manager
         //If plugin is compatible then load all require files.
         if ($baf_afs_compatibily_status == 1) {
 
-            define("AFS_PLUGIN_VERSION", '1.1.1');
+            define("AFS_PLUGIN_VERSION", '1.1.2');
             define("AFS_PLUGIN_UPDATER_SLUG", plugin_basename(__FILE__)); // change plugin current version in here.
-
             define("AFS_PLUGIN_CC_ID", "12033214"); // Plugin codecanyon Id.
+            define('AFS_PLUGIN_INSTALLATION_TAG', 'baf_afs_installation_' . str_replace('.', '_', AFS_PLUGIN_VERSION));
 
             $this->included_files();
             add_action('wp_enqueue_scripts', [&$this, 'afs_enqueue_plugin_scripts']);
@@ -72,7 +72,6 @@ class BAF_AFS_Manager
 
     function baf_afs_requirement_admin_notices()
     {
-
         echo '<div class="updated"><p>You need to download & install '
             . '<b><a href="https://1.envato.market/baf-wp" target="_blank">BWL Advanced FAQ Manager Plugin</a></b> '
             . 'to use <b>Ajaxified FAQ Search - Advanced FAQ Addon</b>. Minimum version <b>1.5.7</b> required ! </p></div>';
@@ -121,7 +120,7 @@ class BAF_AFS_Manager
             'BafAfsAdminData',
             [
                 'product_id' => AFS_PLUGIN_CC_ID,
-                'installation' => get_option('baf_afs_installation')
+                'installation' => get_option(AFS_PLUGIN_INSTALLATION_TAG)
             ]
         );
     }
