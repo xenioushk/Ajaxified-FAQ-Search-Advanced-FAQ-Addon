@@ -4,10 +4,10 @@
  * Plugin Name: Ajaxified FAQ Search - Advanced FAQ Addon
  * Plugin URI: https://bluewindlab.net
  * Description: The Ajaxified FAQ Search is an add-on specifically designed for the BWL Advanced FAQ Manager plugin. This add-on enhances the functionality of the FAQ Manager by introducing a quick and efficient way to search for frequently asked questions.
- * Author: Md Mahbub Alam Khan
- * Version: 1.1.2
+ * Author: Mahbub Alam Khan
+ * Version: 1.1.3
  * Author URI: https://bluewindlab.net
- * WP Requires at least: 5.6+
+ * WP Requires at least: 6.0+
  * Text Domain: afs-addon
  */
 
@@ -28,7 +28,7 @@ class BAF_AFS_Manager
         //If plugin is compatible then load all require files.
         if ($baf_afs_compatibily_status == 1) {
 
-            define("AFS_PLUGIN_VERSION", '1.1.2');
+            define("AFS_PLUGIN_VERSION", '1.1.3');
             define("AFS_PLUGIN_UPDATER_SLUG", plugin_basename(__FILE__)); // change plugin current version in here.
             define("AFS_PLUGIN_CC_ID", "12033214"); // Plugin codecanyon Id.
             define('AFS_PLUGIN_INSTALLATION_TAG', 'baf_afs_installation_' . str_replace('.', '_', AFS_PLUGIN_VERSION));

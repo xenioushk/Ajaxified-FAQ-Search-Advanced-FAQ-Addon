@@ -1,7 +1,6 @@
 <?php
 
 add_action("wp_ajax_baf_afs_installation_counter", "bafAfsInstallationData");
-add_action("wp_ajax_nopriv_baf_afs_installation_counter", "bafAfsInstallationData");
 
 function bafAfcApiUrl()
 {
