@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ajaxified FAQ Search - Advanced FAQ Addon\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2021-06-07 00:11+0600\n"
+"POT-Creation-Date: 2023-08-10 15:56+0600\n"
 "PO-Revision-Date: 2018-01-31 21:24+0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: BlueWindLab <hkhan.cse@gmail.com>\n"
@@ -14,117 +14,119 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.3.2\n"
 "X-Poedit-KeywordsList: _;__;_n;_x;_e;esc_attr__;esc_attr_e;esc_html__;"
 "esc_html_e\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPath-1: ..\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: lang\n"
+"X-Poedit-SearchPath-1: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+"X-Poedit-SearchPathExcluded-1: .git\n"
 
-#: ../includes/afs-ajax-search.php:178 ../includes/afs-helpers.php:43
+#: includes/afs-ajax-search.php:176 includes/afs-helpers.php:40
 msgid "Sorry Nothing Found!"
 msgstr ""
 
-#: ../includes/afs-ajax-search.php:278
+#: includes/afs-ajax-search.php:269
 msgid "Anonymous"
 msgstr ""
 
-#: ../includes/afs-helpers.php:64
-#: ../includes/settings/afs-admin-settings.php:73
-#: ../shortcode/afs-shortcodes.php:10
+#: includes/afs-helpers.php:60
+#: includes/settings/afs-admin-settings.php:75
+#: includes/shortcode/afs-shortcodes.php:11
 msgid "Search Keywords (how to, what is )..... "
 msgstr ""
 
-#: ../includes/afs-helpers.php:89
+#: includes/afs-helpers.php:85
 msgid "Search FAQ"
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:13
+#: includes/settings/afs-admin-settings.php:14
 msgid "Ajaxified FAQ Search Settings"
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:17
+#: includes/settings/afs-admin-settings.php:18
 msgid "Settings saved."
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:26
+#: includes/settings/afs-admin-settings.php:27
 msgid "Save Settings"
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:45
+#: includes/settings/afs-admin-settings.php:47
 msgid "Display Settings: "
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:46
+#: includes/settings/afs-admin-settings.php:48
 msgid "Display Sticky Button? "
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:47
+#: includes/settings/afs-admin-settings.php:49
 msgid "Sticky Search Output Type: "
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:48
+#: includes/settings/afs-admin-settings.php:50
 msgid "Search Placeholder Text: "
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:50
+#: includes/settings/afs-admin-settings.php:52
 msgid "Sticky Container Background: "
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:51
+#: includes/settings/afs-admin-settings.php:53
 msgid "Search Window Background: "
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:52
+#: includes/settings/afs-admin-settings.php:54
 msgid "Window In Animation: "
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:53
+#: includes/settings/afs-admin-settings.php:55
 msgid "Window Out Animation: "
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:54
+#: includes/settings/afs-admin-settings.php:56
 msgid "FAQ Pagination(Item Per Page): "
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:56
+#: includes/settings/afs-admin-settings.php:58
 msgid "Suggestion Box Background: "
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:57
+#: includes/settings/afs-admin-settings.php:59
 msgid "Suggestion Text Color: "
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:58
+#: includes/settings/afs-admin-settings.php:60
 msgid "Suggestion Text Hover Color: "
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:166
+#: includes/settings/afs-admin-settings.php:162
 msgid "Accordion (Default)"
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:167
+#: includes/settings/afs-admin-settings.php:163
 msgid "Suggestion Box"
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:208
+#: includes/settings/afs-admin-settings.php:199
 msgid "Show"
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:209
+#: includes/settings/afs-admin-settings.php:200
 msgid "Hide"
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:239
-#: ../includes/settings/afs-admin-settings.php:287
-#: ../includes/settings/afs-admin-settings.php:370
+#: includes/settings/afs-admin-settings.php:227
+#: includes/settings/afs-admin-settings.php:270
+#: includes/settings/afs-admin-settings.php:352
 msgid "Select"
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:523
+#: includes/settings/afs-admin-settings.php:505
 msgid "Ajaxified FAQ Search Settings."
 msgstr ""
 
-#: ../includes/settings/afs-admin-settings.php:523
+#: includes/settings/afs-admin-settings.php:506
 msgid "Ajaxified Search"
 msgstr ""

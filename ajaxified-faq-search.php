@@ -5,7 +5,7 @@
  * Plugin URI: https://bluewindlab.net
  * Description: The Ajaxified FAQ Search is an add-on specifically designed for the BWL Advanced FAQ Manager plugin. This add-on enhances the functionality of the FAQ Manager by introducing a quick and efficient way to search for frequently asked questions.
  * Author: Mahbub Alam Khan
- * Version: 1.1.3
+ * Version: 1.1.4
  * Author URI: https://bluewindlab.net
  * WP Requires at least: 6.0+
  * Text Domain: afs-addon
@@ -28,7 +28,7 @@ class BAF_AFS_Manager
         //If plugin is compatible then load all require files.
         if ($baf_afs_compatibily_status == 1) {
 
-            define("AFS_PLUGIN_VERSION", '1.1.3');
+            define("AFS_PLUGIN_VERSION", '1.1.4');
             define("AFS_PLUGIN_UPDATER_SLUG", plugin_basename(__FILE__)); // change plugin current version in here.
             define("AFS_PLUGIN_CC_ID", "12033214"); // Plugin codecanyon Id.
             define('AFS_PLUGIN_INSTALLATION_TAG', 'baf_afs_installation_' . str_replace('.', '_', AFS_PLUGIN_VERSION));
@@ -36,16 +36,14 @@ class BAF_AFS_Manager
             $this->included_files();
             add_action('wp_enqueue_scripts', [&$this, 'afs_enqueue_plugin_scripts']);
             add_action('admin_enqueue_scripts', [&$this, 'afs_admin_enqueue_plugin_scripts']);
-            $this->plugin_name_load_plugin_textdomain();
+            add_action('plugins_loaded', [$this, 'afsLoadTranslationFile']);
         }
     }
 
-    function plugin_name_load_plugin_textdomain()
+    function afsLoadTranslationFile()
     {
 
-        $domain = 'afs-addon';
-
-        load_plugin_textdomain($domain, FALSE, dirname(plugin_basename(__FILE__)) . '/lang/');
+        load_plugin_textdomain('afs-addon', FALSE, dirname(plugin_basename(__FILE__)) . '/lang/');
     }
 
     function baf_afs_compatibily_status()
@@ -82,6 +80,11 @@ class BAF_AFS_Manager
 
         if (is_admin()) {
 
+            // Addon Installation Date Time.
+            if (empty(get_option("baf_afs_installation_date"))) {
+                update_option("baf_afs_installation_date", date("Y-m-d H:i:s"));
+            }
+
             include_once dirname(__FILE__) . '/includes/settings/afs-admin-settings.php'; // Load plugins option panel.
             require_once(__DIR__ . '/includes/autoupdater/WpAutoUpdater.php');
             require_once(__DIR__ . '/includes/autoupdater/installer.php');
@@ -113,7 +116,7 @@ class BAF_AFS_Manager
 
     function afs_admin_enqueue_plugin_scripts()
     {
-        wp_register_script('afs-admin', plugins_url('assets/scripts/admin.js', __FILE__), ['jquery', 'wp-color-picker'], AFS_PLUGIN_VERSION, TRUE);
+        wp_enqueue_script('afs-admin', plugins_url('assets/scripts/admin.js', __FILE__), ['jquery', 'wp-color-picker'], AFS_PLUGIN_VERSION, TRUE);
 
         wp_localize_script(
             'afs-admin',
