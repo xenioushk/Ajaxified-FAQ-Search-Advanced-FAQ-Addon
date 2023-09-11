@@ -173,7 +173,7 @@ function afs_get_search_results()
 
         if (count($pageposts) == 0) {
 
-            $final_output .= '<div class="afs-nothing-found"><i class="fa fa-info-o"></i> ' . esc_html__('Sorry Nothing Found!', 'afs-addon') . '</div>';
+            $final_output .= '<div class="afs-nothing-found"><i class="fa fa-info-o"></i> ' . esc_html__("Sorry Nothing Found!", "afs-addon") . '</div>';
         } else {
 
             $pag_limit = 5;
@@ -266,7 +266,7 @@ function get_html_faq_interface($unique_faq_container_id, $post_id, $title, $con
     // Get Author FAQ Author Information
     $bwl_advanced_faq_author = get_post_meta($post_id, "bwl_advanced_faq_author", true);
 
-    $bwl_advanced_faq_author_name = ($bwl_advanced_faq_author == "") ? esc_html__('Anonymous', 'afs-addon') : get_the_author_meta('display_name', $bwl_advanced_faq_author);
+    $bwl_advanced_faq_author_name = ($bwl_advanced_faq_author == "") ? esc_html__("Anonymous", "afs-addon") : get_the_author_meta('display_name', $bwl_advanced_faq_author);
 
     $bwl_advanced_faq_author_info_interface = "<span class='fa fa-user'></span> " . $bwl_advanced_faq_author_name . " &nbsp;";
 

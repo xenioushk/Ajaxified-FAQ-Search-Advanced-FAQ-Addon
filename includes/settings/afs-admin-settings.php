@@ -11,11 +11,11 @@ function afs_settings()
 
 <div class="wrap faq-wrapper baf-option-panel">
 
-  <h2><?php esc_html_e('Ajaxified FAQ Search Settings', 'afs-addon'); ?></h2>
+  <h2><?php esc_html_e("Ajaxified FAQ Search Settings", "afs-addon"); ?></h2>
 
   <?php if (isset($_GET['settings-updated'])) { ?>
   <div id="message" class="updated">
-    <p><strong><?php esc_html_e('Settings saved.', 'afs-addon') ?></strong></p>
+    <p><strong><?php esc_html_e("Settings saved.", "afs-addon") ?></strong></p>
   </div>
   <?php } ?>
 
@@ -25,7 +25,7 @@ function afs_settings()
 
     <p class="submit">
       <input name="submit" type="submit" class="button-primary"
-        value="<?php esc_html_e('Save Settings', 'afs-addon'); ?>" />
+        value="<?php esc_html_e("Save Settings", "afs-addon"); ?>" />
     </p>
   </form>
 
@@ -45,20 +45,20 @@ function afs_register_settings_fields()
     register_setting('afs_options', 'afs_options');
 
     // Common Settings.        
-    add_settings_section('afs_display_section', esc_html__("Display Settings: ", 'afs-addon'), "afs_display_section_cb", __FILE__);
-    add_settings_field('afs_sticky_status',  esc_html__("Display Sticky Button? ", 'afs-addon'), "afs_sticky_btn_settings", __FILE__, 'afs_display_section');
-    add_settings_field('afs_sticky_search_result_type',  esc_html__("Sticky Search Output Type: ", 'afs-addon'), "afs_sticky_search_output_type_settings", __FILE__, 'afs_display_section');
-    add_settings_field('afs_placeholder_text',  esc_html__("Search Placeholder Text: ", 'afs-addon'), "afs_placeholder_text_settings", __FILE__, 'afs_display_section');
+    add_settings_section('afs_display_section', esc_html__("Display Settings: ", "afs-addon"), "afs_display_section_cb", __FILE__);
+    add_settings_field('afs_sticky_status',  esc_html__("Display Sticky Button? ", "afs-addon"), "afs_sticky_btn_settings", __FILE__, 'afs_display_section');
+    add_settings_field('afs_sticky_search_result_type',  esc_html__("Sticky Search Output Type: ", "afs-addon"), "afs_sticky_search_output_type_settings", __FILE__, 'afs_display_section');
+    add_settings_field('afs_placeholder_text',  esc_html__("Search Placeholder Text: ", "afs-addon"), "afs_placeholder_text_settings", __FILE__, 'afs_display_section');
 
-    add_settings_field('afs_sticky_container_bg',  esc_html__("Sticky Container Background: ", 'afs-addon'), "afs_sticky_container_bg_settings", __FILE__, 'afs_display_section');
-    add_settings_field('afs_search_window_color',  esc_html__("Search Window Background: ", 'afs-addon'), "afs_search_window_color_setting", __FILE__, 'afs_display_section');
-    add_settings_field('afs_window_in_animation',  esc_html__("Window In Animation: ", 'afs-addon'), "afs_search_window_in_settings", __FILE__, 'afs_display_section');
-    add_settings_field('afs_window_out_animation',  esc_html__("Window Out Animation: ", 'afs-addon'), "afs_search_window_out_settings", __FILE__, 'afs_display_section');
-    add_settings_field('afs_faq_per_page',  esc_html__("FAQ Pagination(Item Per Page): ", 'afs-addon'), "afs_pagination_settings", __FILE__, 'afs_display_section');
+    add_settings_field('afs_sticky_container_bg',  esc_html__("Sticky Container Background: ", "afs-addon"), "afs_sticky_container_bg_settings", __FILE__, 'afs_display_section');
+    add_settings_field('afs_search_window_color',  esc_html__("Search Window Background: ", "afs-addon"), "afs_search_window_color_setting", __FILE__, 'afs_display_section');
+    add_settings_field('afs_window_in_animation',  esc_html__("Window In Animation: ", "afs-addon"), "afs_search_window_in_settings", __FILE__, 'afs_display_section');
+    add_settings_field('afs_window_out_animation',  esc_html__("Window Out Animation: ", "afs-addon"), "afs_search_window_out_settings", __FILE__, 'afs_display_section');
+    add_settings_field('afs_faq_per_page',  esc_html__("FAQ Pagination(Item Per Page): ", "afs-addon"), "afs_pagination_settings", __FILE__, 'afs_display_section');
 
-    add_settings_field('afs_sugg_box_container_bg',  esc_html__("Suggestion Box Background: ", 'afs-addon'), "afs_sugg_box_container_bg_settings", __FILE__, 'afs_display_section');
-    add_settings_field('afs_sugg_box_text_color',  esc_html__("Suggestion Text Color: ", 'afs-addon'), "afs_sugg_box_text_color_setting", __FILE__, 'afs_display_section');
-    add_settings_field('afs_sugg_box_text_hover_color',  esc_html__("Suggestion Text Hover Color: ", 'afs-addon'), "afs_sugg_box_text_hover_color_setting", __FILE__, 'afs_display_section');
+    add_settings_field('afs_sugg_box_container_bg',  esc_html__("Suggestion Box Background: ", "afs-addon"), "afs_sugg_box_container_bg_settings", __FILE__, 'afs_display_section');
+    add_settings_field('afs_sugg_box_text_color',  esc_html__("Suggestion Text Color: ", "afs-addon"), "afs_sugg_box_text_color_setting", __FILE__, 'afs_display_section');
+    add_settings_field('afs_sugg_box_text_hover_color',  esc_html__("Suggestion Text Hover Color: ", "afs-addon"), "afs_sugg_box_text_hover_color_setting", __FILE__, 'afs_display_section');
 }
 
 /**
@@ -73,7 +73,7 @@ function afs_placeholder_text_settings()
 
     $afs_options = get_option('afs_options');
 
-    $afs_placeholder_text  =  esc_html__('Search Keywords (how to, what is )..... ', 'afs-addon');
+    $afs_placeholder_text  =  esc_html__("Search Keywords (how to, what is )..... ", "afs-addon");
 
     if (isset($afs_options['afs_placeholder_text'])) {
 
@@ -160,8 +160,8 @@ function afs_sticky_search_output_type_settings()
     }
 
     echo '<select name="afs_options[afs_sticky_search_result_type]">
-                    <option value="0" ' . $accordion_status . '>' . esc_html__('Accordion (Default)', 'afs-addon') . '</option>   
-                    <option value="1" ' . $sugg_box_status . '>' . esc_html__('Suggestion Box', 'afs-addon') . '</option>               
+                    <option value="0" ' . $accordion_status . '>' . esc_html__("Accordion (Default)", "afs-addon") . '</option>   
+                    <option value="1" ' . $sugg_box_status . '>' . esc_html__("Suggestion Box", "afs-addon") . '</option>               
                  </select>';
 }
 
@@ -197,8 +197,8 @@ function afs_sticky_btn_settings()
     }
 
     echo '<select name="afs_options[afs_sticky_status]">
-                    <option value="1" ' . $show_status . '>' . esc_html__('Show', 'afs-addon') . '</option>   
-                    <option value="0" ' . $hide_status . '>' . esc_html__('Hide', 'afs-addon') . '</option>               
+                    <option value="1" ' . $show_status . '>' . esc_html__("Show", "afs-addon") . '</option>   
+                    <option value="0" ' . $hide_status . '>' . esc_html__("Hide", "afs-addon") . '</option>               
                  </select>';
 }
 
@@ -225,7 +225,7 @@ function afs_pagination_settings()
 
     $afs_faq_per_page_string =  '<select name="afs_options[afs_faq_per_page]">';
 
-    $afs_faq_per_page_string .= '<option value="" "selected=selected"> ' . esc_html__('Select', 'afs-addon') . ' </option>';
+    $afs_faq_per_page_string .= '<option value="" "selected=selected"> ' . esc_html__("Select", "afs-addon") . ' </option>';
 
     for ($i = 1; $i <= 30; $i++) {
 
@@ -268,7 +268,7 @@ function afs_search_window_in_settings()
 
     $afs_animation_string =  '<select name="afs_options[afs_window_in_animation]">';
 
-    $afs_animation_string .= '<option value="" "selected=selected"> ' . esc_html__('Select', 'afs-addon') . ' </option>';
+    $afs_animation_string .= '<option value="" "selected=selected"> ' . esc_html__("Select", "afs-addon") . ' </option>';
 
     $afs_in_animation = [
         'bounce' => 'bounce',
@@ -350,7 +350,7 @@ function afs_search_window_out_settings()
 
     $afs_animation_string =  '<select name="afs_options[afs_window_out_animation]">';
 
-    $afs_animation_string .= '<option value="" "selected=selected"> ' . esc_html__('Select', 'afs-addon') . ' </option>';
+    $afs_animation_string .= '<option value="" "selected=selected"> ' . esc_html__("Select", "afs-addon") . ' </option>';
 
     $afs_out_animation = [
         'bounce' => 'bounce',
@@ -503,8 +503,8 @@ function afs_settings_submenu()
 
     add_submenu_page(
         'edit.php?post_type=bwl_advanced_faq',
-        esc_html__('Ajaxified FAQ Search Settings.', 'afs-addon'),
-        esc_html__('Ajaxified Search', 'afs-addon'),
+        "Ajaxified FAQ Search Settings.",
+        "Ajaxified Search",
         'administrator',
         'afs-settings',
         'afs_settings'
@@ -512,5 +512,4 @@ function afs_settings_submenu()
 }
 
 add_action('admin_menu', 'afs_settings_submenu');
-
 add_action('admin_init', 'afs_register_settings_fields');
