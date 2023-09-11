@@ -37,7 +37,7 @@ var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>',
   afs_search_window_color = '<?php echo $afs_search_window_color; ?>',
   afs_window_in_animation = '<?php echo $afs_window_in_animation; ?>',
   afs_window_out_animation = '<?php echo $afs_window_out_animation; ?>',
-  afs_search_no_results_msg = '<?php esc_html_e('Sorry Nothing Found!', 'afs-addon'); ?>';
+  afs_search_no_results_msg = '<?php esc_html_e("Sorry Nothing Found!", "afs-addon"); ?>';
 </script>
 
 <?php
@@ -57,7 +57,7 @@ function afs_get_sticky_items()
 
     $afs_sticky_status  = 1;
     $afs_sticky_search_result_type = 0; //0=Accordion & 1=Suggestion Box.
-    $afs_placeholder_text = esc_html__('Search Keywords (how to, what is )..... ', 'afs-addon');
+    $afs_placeholder_text = esc_html__("Search Keywords (how to, what is )..... ", "afs-addon");
 
     $afs_sticky_html = "";
 
@@ -82,7 +82,7 @@ function afs_get_sticky_items()
         $afs_search_modal_window = "";
 
         $afs_search_html .= '<li id="afs_search_popup"  class="afs_search_popup">
-                                           <a href="#asf_animated_modal" id="asf_modal_trigger" title="' . esc_html__('Search FAQ', 'afs-addon') . '"><i class="fa fa-question-circle"></i>  <span>' . esc_html__('Search FAQ', 'afs-addon') . '</span></a>
+                                           <a href="#asf_animated_modal" id="asf_modal_trigger" title="' . esc_html__("Search FAQ", "afs-addon") . '"><i class="fa fa-question-circle"></i>  <span>' . esc_html__("Search FAQ", "afs-addon") . '</span></a>
                                           </li>';
 
         $afs_search_modal_window .= '<div id="asf_animated_modal">
