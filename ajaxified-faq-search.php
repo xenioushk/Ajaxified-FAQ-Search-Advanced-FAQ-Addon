@@ -32,7 +32,7 @@ class BAF_AFS_Manager
 
         // Constants.
         define("AFS_PLUGIN_TITLE", "Ajaxified FAQ Search");
-        define("AFS_PLUGIN_VERSION", '1.1.6');
+        define("AFS_PLUGIN_VERSION", "1.1.6");
         define("AFS_PLUGIN_UPDATER_SLUG", plugin_basename(__FILE__)); // change plugin current version in here.
         define("AFS_PLUGIN_CC_ID", "12033214"); // Plugin codecanyon Id.
         define('AFS_PLUGIN_INSTALLATION_TAG', 'baf_afs_installation_' . str_replace('.', '_', AFS_PLUGIN_VERSION));
