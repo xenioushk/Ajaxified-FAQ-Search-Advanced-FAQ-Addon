@@ -54,10 +54,12 @@ if (!class_exists('WpAutoUpdater')) {
 
         public function check_info($false, $action, $arg)
         {
-            if ($arg->slug === $this->slug) {
-                $information = $this->getRemote_information();
-                //$information->slug = $this->slug; //This is the new addition
-                return $information;
+            if (is_object($arg) && property_exists($arg, 'slug')) {
+                if ($arg->slug === $this->slug) {
+                    $information = $this->getRemote_information();
+                    //$information->slug = $this->slug; //This is the new addition
+                    return $information;
+                }
             }
             return $false;
         }
