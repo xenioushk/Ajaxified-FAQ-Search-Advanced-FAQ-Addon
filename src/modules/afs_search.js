@@ -1,7 +1,12 @@
 ;(function ($) {
   $(function () {
     var afs_filter_container = $(".afs_filter_container")
+
     if (typeof afs_filter_container != "undefined") {
+      const BafAccordionOpenedClass = "baf_schema opened-label"
+      const BafAccordionClosedClass = "baf_schema closed-label"
+      const BafTitleClass = ".baf_schema"
+
       var baf_display_limit = 10
 
       afs_filter_container.each(function () {
@@ -80,8 +85,6 @@
       })
 
       function active_suggestion_box(suggestions, afs_clear_btn, data, suggestionsList, live_search_field) {
-        //        console.log("Data: "+data.toSource());
-        //console.log(isNaN(data));
         suggestions.fadeIn()
         afs_clear_btn.removeClass("afs-dn")
         var search_result_html = "<ul>"
@@ -108,7 +111,7 @@
         }
 
         return $.ajax({
-          url: ajaxurl,
+          url: BafFrontendData.ajaxurl,
           type: "POST",
           dataType: data_type,
           data: {
@@ -119,6 +122,55 @@
             output_format: data_type,
           },
         })
+      }
+
+      function bafHexToRgba(hex, opacity) {
+        var c
+        if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+          c = hex.substring(1).split("")
+          if (c.length == 3) {
+            c = [c[0], c[0], c[1], c[1], c[2], c[2]]
+          }
+          c = "0x" + c.join("")
+          return "rgba(" + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(",") + "," + opacity + ")"
+        } else {
+          return 'rgba("0,0,0,' + opacity + '")'
+        }
+      }
+
+      // Custom scripts to generate dynamic css.
+
+      function generateBafCustomStyles() {
+        if ($(".baf_custom_style").length > 0) {
+          var customStyle = ""
+
+          $(".baf_custom_style").each(function () {
+            var container_id = $(this).attr("container_id"),
+              $section_faq_unique_class = ".section_baf_" + container_id,
+              first_color = $(this).data("first_color"),
+              second_color = $(this).data("second_color"),
+              label_text_color = $(this).data("label_text_color"),
+              accordion_arrow = $(this).data("accordion_arrow")
+
+            customStyle += $section_faq_unique_class + "{clear:both;}"
+            customStyle += $section_faq_unique_class + " .baf_schema{background: linear-gradient( " + bafHexToRgba(first_color, 1) + ", " + bafHexToRgba(second_color, 1) + ") !important; color: " + label_text_color + " !important;}"
+            customStyle += $section_faq_unique_class + " .baf_schema.opened-label{  background: linear-gradient( " + bafHexToRgba(first_color, 1) + ", " + bafHexToRgba(first_color, 1) + ") !important;}"
+            customStyle += $section_faq_unique_class + ' .baf_schema.opened-label:after{ font-size: 15px; font-weight:600; font-family: "Font Awesome 5 Free"; content:  "' + "\\" + accordion_arrow + '" !important; color: ' + label_text_color + " !important;}"
+            customStyle += $section_faq_unique_class + ' .baf_schema.closed-label:after{ font-size: 15px; font-weight: 600; font-family: "Font Awesome 5 Free"; content:  "' + "\\" + accordion_arrow + '" !important; color: ' + label_text_color + " !important;}"
+            customStyle += $section_faq_unique_class + " .baf-expand-all { background: " + first_color + " !important; color: " + label_text_color + " !important;}"
+            customStyle += $section_faq_unique_class + " .baf-expand-all:hover { background: " + second_color + " !important; color: " + label_text_color + " !important;}"
+            customStyle += $section_faq_unique_class + " .baf-collapsible-all{ background: " + first_color + " !important; color: " + label_text_color + " !important;}"
+            customStyle += $section_faq_unique_class + " .baf-collapsible-all:hover{ background: " + second_color + " !important; color: " + label_text_color + " !important;}"
+            customStyle += $section_faq_unique_class + " .active_page{ background: " + first_color + " !important;}"
+
+            // Custom Theme.
+            customStyle += $section_faq_unique_class + ".baf_layout_semi_round .bwl-faq-container{ background: linear-gradient( " + bafHexToRgba(first_color, 1) + ", " + bafHexToRgba(second_color, 1) + ") !important;}"
+            customStyle += $section_faq_unique_class + ".baf_layout_round .bwl-faq-container{ background: linear-gradient( " + bafHexToRgba(first_color, 1) + ", " + bafHexToRgba(second_color, 1) + ") !important;}"
+          })
+
+          $("head style[data-type='baf_afs-custom-css']").length ? $("head style[data-type='baf_afs-custom-css']").remove() : ""
+          $("<style data-type='baf_afs-custom-css'>" + customStyle + "</style>").appendTo("head")
+        }
       }
 
       function active_accordion() {
@@ -144,14 +196,14 @@
             $baf_collapsible_btn = $baf_section.find(".baf-collapsible-all")
           //
           if ($baf_expand_btn.length == 1 && $baf_collapsible_btn.length == 1) {
-            var label_default_state_color = $baf_section.find("label").attr("style")
+            var label_default_state_color = $baf_section.find(".baf_schema").attr("style")
 
             $baf_expand_btn.on("click", function () {
               $("div.bwl-faq-container-" + $baf_container_id).each(function () {
                 // Display Articles.
                 $(this).find("article").removeAttr("style").removeClass("baf-hide-article").addClass("baf-show-article baf-article-padding")
                 // Update Label Icon.
-                $(this).find("label").removeAttr("class").addClass("opened-label")
+                $(this).find(BafTitleClass).removeAttr("class").addClass(BafAccordionOpenedClass)
                 // Update Check Box Status.
                 $(this).find("input[type=checkbox]").prop("checked", false) // Unchecks it
               })
@@ -162,13 +214,14 @@
                 // Display Articles.
                 $(this).find("article").removeAttr("style").removeClass("baf-show-article baf-article-padding").addClass("baf-hide-article article-box-shadow")
                 // Update Label Icon.
-                $(this).find("label").removeAttr("class").addClass("closed-label")
+                $(this).find(BafTitleClass).removeAttr("class").addClass(BafAccordionClosedClass)
                 // Update Check Box Status.
                 $(this).find("input[type=checkbox]").prop("checked", true) // Unchecks it
               })
             })
           }
         })
+        generateBafCustomStyles()
       }
 
       function baf_get_pagination_html($baf_section, show_per_page, number_of_items, baf_search) {
@@ -233,7 +286,7 @@
 
         var page_array = []
         var display_none_class = ""
-        var baf_pages_string = string_singular_page
+        var baf_pages_string = BafFrontendData.string_singular_page
         while (number_of_pages > current_link) {
           page_array[current_link] = current_link
 
@@ -246,10 +299,10 @@
         }
 
         if (number_of_pages > 1) {
-          baf_pages_string = string_plural_page
+          baf_pages_string = BafFrontendData.string_plural_page
         }
 
-        navigation_html += '<a class="next_link" href="#"><i class="fa fa-chevron-right"></i></a></div><div class="total_pages">' + string_total + " " + number_of_pages + " " + baf_pages_string + "</div>"
+        navigation_html += '<a class="next_link" href="#"><i class="fa fa-chevron-right"></i></a></div><div class="total_pages">' + BafFrontendData.string_total + " " + number_of_pages + " " + baf_pages_string + "</div>"
 
         $baf_section.find("#baf_page_navigation").html("").html(navigation_html)
 
@@ -359,9 +412,9 @@
 
         accordion_container.find("input[type=checkbox]").prop("checked", true)
 
-        accordion_container.find("label").addClass("closed-label")
+        accordion_container.find(BafTitleClass).addClass(BafAccordionClosedClass)
 
-        accordion_container.find("label").on("click", function () {
+        accordion_container.find(BafTitleClass).on("click", function () {
           var label_id = $(this).attr("label_id"),
             parent_container_id = $(this).attr("parent_container_id")
 
@@ -369,13 +422,13 @@
 
           accordion_container = $(".ac-container[container_id=" + parent_container_id + "]")
 
-          /*------------------------------  LABEL SECTION ---------------------------------*/
+          /*---  LABEL SECTION ---*/
 
           var current_faq_label_container = $(this),
             current_faq_checkbox = current_faq_label_container.next("input[type=checkbox]"), // here we need to keep squence. First Label, then checkbox , then article. It's releated with shortcode output.
             current_article_faq_container = current_faq_checkbox.next("article")
 
-          /*------------------------------  ARTICLE SECTION---------------------------------*/
+          /*---  ARTICLE SECTION---*/
 
           if (current_faq_checkbox.is(":checked")) {
             //New Code.
@@ -384,17 +437,17 @@
             // Now we set all checkbox checked.
 
             accordion_container.find("input[type=checkbox]").prop("checked", true) //
-            accordion_container.find("label").removeAttr("class").addClass("closed-label")
+            accordion_container.find(BafTitleClass).removeAttr("class").addClass(BafAccordionClosedClass)
 
             // Checked
-            current_faq_checkbox.prop("checked", true) // Uncheck it
+            current_faq_checkbox.prop("checked", false) // Uncheck it
             current_article_faq_container.removeAttr("style").removeClass("baf-hide-article").addClass("baf-show-article baf-article-padding")
-            current_faq_label_container.removeAttr("class").addClass("opened-label")
+            current_faq_label_container.removeAttr("class").addClass(BafAccordionOpenedClass)
           } else {
             // For Unchecked.
-
-            accordion_container.find("article").removeAttr("style").removeClass("baf-show-article baf-article-padding").addClass("baf-hide-article article-box-shadow")
-            accordion_container.find("label").removeAttr("class").addClass("closed-label")
+            current_faq_checkbox.prop("checked", true) // Uncheck it
+            accordion_container.find("article").removeAttr("style").removeAttr("class").addClass("ac-medium article-box-shadow baf-hide-article")
+            accordion_container.find(BafTitleClass).removeAttr("class").addClass(BafAccordionClosedClass)
           }
         })
       }
