@@ -31,26 +31,45 @@ class BAF_AFS_Manager
     {
 
         // Constants.
-        define("AFS_PLUGIN_TITLE", "Ajaxified FAQ Search");
+        define("AFS_PARENT_PLUGIN_TITLE", "BWL Advanced FAQ Manager");
+        define("AFS_PLUGIN_TITLE", "Ajaxified FAQ Search - Advanced FAQ Addon");
         define("AFS_PLUGIN_VERSION", "1.1.7");
         define("AFS_PLUGIN_UPDATER_SLUG", plugin_basename(__FILE__)); // change plugin current version in here.
         define("AFS_PLUGIN_CC_ID", "12033214"); // Plugin codecanyon Id.
         define('AFS_PLUGIN_INSTALLATION_TAG', 'baf_afs_installation_' . str_replace('.', '_', AFS_PLUGIN_VERSION));
 
-        $baf_afs_compatibily_status = $this->baf_afs_compatibily_status();
+        define("AFS_PARENT_PURCHASE_VERIFIED_KEY", "baf_purchase_verified");
 
-        // If plugin is not compatible then display a notice in admin panel.
-        if ($baf_afs_compatibily_status == 0 && is_admin()) {
+        //Checking plugin compatibility and require parent plugin.
+        $compatibilyStatus = $this->baf_afs_compatibily_status();
 
-            add_action('admin_notices', [$this, 'baf_afs_requirement_admin_notices']);
+        // Display a notice if parent plugin is missing.
+        if ($compatibilyStatus == 0 && is_admin()) {
+
+            add_action('admin_notices', [$this, 'afsPluginDependenciesNotice']);
+            return false;
         }
 
-        //If plugin is compatible then load all require files.
-        if ($baf_afs_compatibily_status == 1) {
+        // Checking purchase status.
+        $purchaseStatus = $this->getPurchaseStatus();
+
+        // Display notice if purchase code is missing.
+        if (is_admin() && $purchaseStatus == 0) {
+
+            add_action('admin_notices', array($this, 'bafTplPurchaseVerificationNotice'));
+            return false;
+        }
+        // if the compatibility and purchase code is okay
+        // then we will set the status 1.
+        $compatibilyStatus = $purchaseStatus ? 1 : 0;
+
+        // Finally, load the required files for the addon.
+
+        if ($compatibilyStatus == 1) {
 
             $this->included_files();
-            add_action('wp_enqueue_scripts', [&$this, 'afs_enqueue_plugin_scripts']);
-            add_action('admin_enqueue_scripts', [&$this, 'afs_admin_enqueue_plugin_scripts']);
+            add_action('wp_enqueue_scripts', [&$this, 'enqueueScripts']);
+            add_action('admin_enqueue_scripts', [&$this, 'enqueueAdminScripts']);
             add_action('plugins_loaded', [$this, 'afsLoadTranslationFile']);
         }
     }
@@ -62,16 +81,7 @@ class BAF_AFS_Manager
 
     function baf_afs_compatibily_status()
     {
-
-        include_once(ABSPATH . 'wp-admin/includes/plugin.php');
-
-        $current_version = get_option('bwl_advanced_faq_version');
-
-        if ($current_version == "") {
-            $current_version = '1.5.7';
-        }
-
-        if (class_exists('BWL_Advanced_Faq_Manager') && $current_version > '1.5.7') {
+        if (class_exists('BWL_Advanced_Faq_Manager')) {
 
             return 1; // Parent FAQ Plugin has been installed & activated.
 
@@ -82,12 +92,44 @@ class BAF_AFS_Manager
         }
     }
 
-    function baf_afs_requirement_admin_notices()
+    function afsPluginDependenciesNotice()
     {
         echo '<div class="notice notice-error"><p>You need to download & install '
-            . '<b><a href="https://1.envato.market/baf-wp" target="_blank">BWL Advanced FAQ Manager Plugin</a></b> '
-            . 'to use <b>Ajaxified FAQ Search - Advanced FAQ Addon</b>. Minimum version <b>1.5.7</b> required ! </p></div>';
+            . '<b><a href="https://1.envato.market/baf-wp" target="_blank">' . AFS_PARENT_PLUGIN_TITLE . '</a></b> plugin '
+            . 'to use <b>' . AFS_PLUGIN_TITLE . '</b>.</p></div>';
     }
+
+    /**
+     * Check the purchase status.
+     * @since: 1.1.7
+     * @return bool
+     */
+    public function getPurchaseStatus()
+    {
+        return get_option(AFS_PARENT_PURCHASE_VERIFIED_KEY) == 1 ? 1 : 0;
+    }
+
+    /**
+     * Display prompt notice to verify license.
+     * @since: 1.1.7
+     * @return string
+     */
+
+    public function bafTplPurchaseVerificationNotice()
+    {
+        $licensePage = admin_url("admin.php?page=baf-license");
+
+        echo '<div class="notice notice-error"><p class="bwl_plugins_notice_text">
+        <span class="dashicons dashicons-lock bwl_plugins_notice_text--danger"></span> 
+        You need to <a href="' . $licensePage . '" class="bwl_plugins_notice_text--danger bwl_plugins_notice_text--bold">ACTIVATE</a> the '
+            . '<b>' . AFS_PARENT_PLUGIN_TITLE . '</b> plugin '
+            . 'to use <b>' . AFS_PLUGIN_TITLE . '</b>. </p></div>';
+    }
+
+    /**
+     * Include addon required files.
+     * @since: 1.0.0
+     */
 
     function included_files()
     {
@@ -113,7 +155,12 @@ class BAF_AFS_Manager
         include_once dirname(__FILE__) . '/includes/afs-ajax-search.php';
     }
 
-    function afs_enqueue_plugin_scripts()
+    /**
+     * Include addon front-end scripts.
+     * @since: 1.0.0
+     */
+
+    function enqueueScripts()
     {
 
         wp_enqueue_style('afs-simple-popup', plugins_url('libs/jquery.simple.popup/styles/popup.css', __FILE__), [], AFS_PLUGIN_VERSION);
@@ -128,7 +175,12 @@ class BAF_AFS_Manager
         wp_enqueue_script('afs-frontend', plugins_url('assets/scripts/frontend.js', __FILE__), ['jquery', 'afs-animate-modal'], AFS_PLUGIN_VERSION, TRUE);
     }
 
-    function afs_admin_enqueue_plugin_scripts()
+    /**
+     * Include addon back-end scripts.
+     * @since: 1.0.0
+     */
+
+    function enqueueAdminScripts()
     {
         wp_enqueue_script('afs-admin', plugins_url('assets/scripts/admin.js', __FILE__), ['jquery', 'wp-color-picker'], AFS_PLUGIN_VERSION, TRUE);
 
@@ -143,14 +195,14 @@ class BAF_AFS_Manager
     }
 }
 
-/*---Initialization---*/
+// Addon Initialization.
 
-function init_baf_ajaxified_search()
+function initBafAfsAddon()
 {
     new BAF_AFS_Manager();
 }
 
-add_action('init', 'init_baf_ajaxified_search');
+add_action('init', 'initBafAfsAddon');
 
 function template_chooser($template)
 {
