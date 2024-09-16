@@ -4,6 +4,8 @@
 
 This addon comes with 25+ animated modal windows with sticky buttons for the best user experience(UX). The addon comes with almost zero configuration and zero coding requirement features.
 
+![Ajaxified FAQ Search - Advanced FAQ Addon](https://xenioushk.github.io/docs-plugins-addon/baf-addon/atfc/img/addon_output/demo.png)
+
 Addon also brings **extensive option panel** that allows you to configure search window settings according to you're need. You can set the window color, Turn ON/OFF the sticky search button, Change sticky button colors, set Pagination, set animation, and many more.
 
 [Demo](https://projects.bluewindlab.net/wpplugin/baf/) | [Download](https://bluewindlab.net/product/woocommerce-product-voting-addon/) | [Documentation](https://xenioushk.github.io/docs-plugins-addon/baf-addon/atfc/index.html)
