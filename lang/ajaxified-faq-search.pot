@@ -1,38 +1,50 @@
-# Copyright (C) 2015 Automattic
-# This file is distributed under the GNU General Public License v2 or later.
-#, fuzzy
+# Copyright (C) 2024 Mahbub Alam Khan
+# This file is distributed under the same license as the Ajaxified FAQ Search - Advanced FAQ Addon plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ajaxified FAQ Search - Advanced FAQ Addon\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2023-08-10 15:56+0600\n"
-"PO-Revision-Date: 2018-01-31 21:24+0600\n"
+"Project-Id-Version: Ajaxified FAQ Search - Advanced FAQ Addon 1.1.8\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ajaxified-faq-search\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: BlueWindLab <hkhan.cse@gmail.com>\n"
-"Language: en\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
-"X-Poedit-KeywordsList: _;__;_n;_x;_e;esc_attr__;esc_attr_e;esc_html__;"
-"esc_html_e\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-SearchPath-0: lang\n"
-"X-Poedit-SearchPath-1: .\n"
-"X-Poedit-SearchPathExcluded-0: node_modules\n"
-"X-Poedit-SearchPathExcluded-1: .git\n"
+"POT-Creation-Date: 2024-12-08T23:39:54+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.9.0\n"
+"X-Domain: afs-addon\n"
 
-#: includes/afs-ajax-search.php:176 includes/afs-helpers.php:40
+#. Plugin Name of the plugin
+msgid "Ajaxified FAQ Search - Advanced FAQ Addon"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://bluewindlab.net/portfolio/ajaxified-faq-search-advanced-faq-addon/"
+msgstr ""
+
+#. Description of the plugin
+msgid "The Ajaxified FAQ Search is an add-on specifically designed for the BWL Advanced FAQ Manager plugin. This add-on enhances the functionality of the FAQ Manager by introducing a quick and efficient way to search for frequently asked questions."
+msgstr ""
+
+#. Author of the plugin
+msgid "Mahbub Alam Khan"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://codecanyon.net/user/xenioushk"
+msgstr ""
+
+#: includes/afs-ajax-search.php:179
+#: includes/afs-helpers.php:40
 msgid "Sorry Nothing Found!"
 msgstr ""
 
-#: includes/afs-ajax-search.php:269
+#: includes/afs-ajax-search.php:301
 msgid "Anonymous"
 msgstr ""
 
 #: includes/afs-helpers.php:60
-#: includes/settings/afs-admin-settings.php:75
+#: includes/settings/afs-admin-settings.php:76
 #: includes/shortcode/afs-shortcodes.php:11
 msgid "Search Keywords (how to, what is )..... "
 msgstr ""
@@ -49,84 +61,76 @@ msgstr ""
 msgid "Settings saved."
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:27
+#: includes/settings/afs-admin-settings.php:28
 msgid "Save Settings"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:47
+#: includes/settings/afs-admin-settings.php:48
 msgid "Display Settings: "
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:48
+#: includes/settings/afs-admin-settings.php:49
 msgid "Display Sticky Button? "
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:49
+#: includes/settings/afs-admin-settings.php:50
 msgid "Sticky Search Output Type: "
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:50
+#: includes/settings/afs-admin-settings.php:51
 msgid "Search Placeholder Text: "
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:52
+#: includes/settings/afs-admin-settings.php:53
 msgid "Sticky Container Background: "
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:53
+#: includes/settings/afs-admin-settings.php:54
 msgid "Search Window Background: "
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:54
+#: includes/settings/afs-admin-settings.php:55
 msgid "Window In Animation: "
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:55
+#: includes/settings/afs-admin-settings.php:56
 msgid "Window Out Animation: "
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:56
+#: includes/settings/afs-admin-settings.php:57
 msgid "FAQ Pagination(Item Per Page): "
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:58
+#: includes/settings/afs-admin-settings.php:59
 msgid "Suggestion Box Background: "
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:59
+#: includes/settings/afs-admin-settings.php:60
 msgid "Suggestion Text Color: "
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:60
+#: includes/settings/afs-admin-settings.php:61
 msgid "Suggestion Text Hover Color: "
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:162
+#: includes/settings/afs-admin-settings.php:163
 msgid "Accordion (Default)"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:163
+#: includes/settings/afs-admin-settings.php:164
 msgid "Suggestion Box"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:199
+#: includes/settings/afs-admin-settings.php:200
 msgid "Show"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:200
+#: includes/settings/afs-admin-settings.php:201
 msgid "Hide"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:227
-#: includes/settings/afs-admin-settings.php:270
-#: includes/settings/afs-admin-settings.php:352
+#: includes/settings/afs-admin-settings.php:228
+#: includes/settings/afs-admin-settings.php:271
+#: includes/settings/afs-admin-settings.php:353
 msgid "Select"
-msgstr ""
-
-#: includes/settings/afs-admin-settings.php:505
-msgid "Ajaxified FAQ Search Settings."
-msgstr ""
-
-#: includes/settings/afs-admin-settings.php:506
-msgid "Ajaxified Search"
 msgstr ""
