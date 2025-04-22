@@ -138,5 +138,9 @@ class PluginConstants {
 		define( 'AFSADDONWP_PRODUCT_ID', '12033214' ); // Plugin codecanyon/themeforest Id.
 		define( 'AFSADDONWP_PRODUCT_INSTALLATION_TAG', 'baf_afs_installation_' . str_replace( '.', '_', AFSADDONWP_PLUGIN_VERSION ) );
 
+		define( 'AFSADDONWP_PRODUCT_OPTIONS_PANEL', admin_url( 'edit.php?post_type=bwl_advanced_faq&page=afs-settings' ) );
+		define( 'AFSADDONWP_PRODUCT_DOC', 'https://xenioushk.github.io/docs-plugins-addon/baf-addon/atfc/index.html' );
+		define( 'AFSADDONWP_SUPPORT', 'https://codecanyon.net/item/bwl-advanced-faq-manager/5007135/support/contact' );
+		define( 'AFSADDONWP_PRODUCT_YOUTUBE_PLAYLIST', '#' );
 	}
 }

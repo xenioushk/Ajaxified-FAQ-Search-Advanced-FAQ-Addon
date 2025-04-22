@@ -1,12 +1,12 @@
 <?php
-namespace FTFWCWP\Callbacks\OptionsPanel\FieldsSettings;
+namespace AFSADDONWP\Callbacks\OptionsPanel\FieldsSettings;
 
-use FTFWCWP\Callbacks\OptionsPanel\RenderFields\DisplayFieldsRenderCb;
+use AFSADDONWP\Callbacks\OptionsPanel\RenderFields\DisplayFieldsRenderCb;
 
 /**
  * Class for registering fields.
  *
- * @package FTFWCWP
+ * @package AFSADDONWP
  * @since: 1.0.0
  * @author: Mahbub Alam Khan
  */
@@ -21,41 +21,49 @@ class DisplayFieldsCb {
 			// Register fields here if needed.
 
 			$settings_fields = [
-				'faqftw_tab_title' => [
-					'title'    => esc_html__( 'Tab Title:', 'baf-faqtfw' ),
-					'callback' => [ $render_cb, 'get_tab_title' ],
+				'afs_sticky_status' => [
+					'title'    => esc_html__( 'Display Sticky Button?', 'afs-addon' ),
+					'callback' => [ $render_cb, 'get_sticky_status' ],
 				],
-				'faqftw_tab_position' => [
-					'title'    => esc_html__( 'Tab Position:', 'baf-faqtfw' ),
-					'callback' => [ $render_cb, 'get_tab_position' ],
+				'afs_sticky_search_result_type' => [
+					'title'    => esc_html__( 'Sticky Search Output Type:', 'afs-addon' ),
+					'callback' => [ $render_cb, 'get_sticky_search_result_type' ],
 				],
-				'faqftw_faq_counter' => [
-					'title'    => esc_html__( 'Display FAQ Counter?', 'baf-faqtfw' ),
-					'callback' => [ $render_cb, 'get_faq_counter' ],
+				'afs_placeholder_text' => [
+					'title'    => esc_html__( 'Search Placeholder Text', 'afs-addon' ),
+					'callback' => [ $render_cb, 'get_search_placeholder_text' ],
 				],
-				'faqftw_auto_hide_tab' => [
-					'title'    => esc_html__( 'Hide Tab If Total FAQs Are Zero?', 'baf-faqtfw' ),
-					'callback' => [ $render_cb, 'get_auto_hide_tab' ],
+				'afs_sticky_container_bg' => [
+					'title'    => esc_html__( 'Sticky Container Background:', 'afs-addon' ),
+					'callback' => [ $render_cb, 'get_sticky_container_bg' ],
 				],
-				'faqftw_show_search_box' => [
-					'title'    => esc_html__( 'Show Search Box?', 'baf-faqtfw' ),
-					'callback' => [ $render_cb, 'get_show_search_box' ],
+				'afs_search_window_color' => [
+					'title'    => esc_html__( 'Search Window Background:', 'afs-addon' ),
+					'callback' => [ $render_cb, 'get_search_window_color' ],
 				],
-				'faqftw_show_meta_box' => [
-					'title'    => esc_html__( 'Show Meta Info Box?', 'baf-faqtfw' ),
-					'callback' => [ $render_cb, 'get_show_meta_box' ],
+				'afs_window_in_animation' => [
+					'title'    => esc_html__( 'Window In Animation', 'afs-addon' ),
+					'callback' => [ $render_cb, 'get_search_window_in' ],
 				],
-				'faqftw_show_voting_box' => [
-					'title'    => esc_html__( 'Show Voting Box?', 'baf-faqtfw' ),
-					'callback' => [ $render_cb, 'get_show_voting_box' ],
+				'afs_window_out_animation' => [
+					'title'    => esc_html__( 'Window Out Animation', 'afs-addon' ),
+					'callback' => [ $render_cb, 'get_search_window_out' ],
 				],
-				'faqftw_enable_pagination' => [
-					'title'    => esc_html__( 'Enable FAQ Pagination?', 'baf-faqtfw' ),
-					'callback' => [ $render_cb, 'get_enable_pagination' ],
+				'afs_faq_per_page' => [
+					'title'    => esc_html__( 'FAQ Pagination(Item Per Page)', 'afs-addon' ),
+					'callback' => [ $render_cb, 'get_faq_per_page' ],
 				],
-				'faqftw_item_per_page' => [
-					'title'    => esc_html__( 'Item Per Page', 'baf-faqtfw' ),
-					'callback' => [ $render_cb, 'get_item_per_page' ],
+				'afs_sugg_box_container_bg' => [
+					'title'    => esc_html__( 'Suggestion Box Background', 'afs-addon' ),
+					'callback' => [ $render_cb, 'get_sugg_box_container_bg' ],
+				],
+				'afs_sugg_box_text_color' => [
+					'title'    => esc_html__( 'Suggestion Text Background', 'afs-addon' ),
+					'callback' => [ $render_cb, 'get_sugg_box_text_color' ],
+				],
+				'afs_sugg_box_text_hover_color' => [
+					'title'    => esc_html__( 'Suggestion Text Hover Color', 'afs-addon' ),
+					'callback' => [ $render_cb, 'get_sugg_box_text_hover_color' ],
 				],
 			];
 

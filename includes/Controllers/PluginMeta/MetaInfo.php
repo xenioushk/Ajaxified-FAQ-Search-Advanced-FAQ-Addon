@@ -31,17 +31,17 @@ class MetaInfo {
 			// nt = 1 // new tab.
 			$additional_links = [
 				[
-					'title' => esc_html__( 'Options Panel', 'afs-addon' ),
-					'url'   => get_admin_url() . '#',
+					'title' => '🛠️ Options Panel',
+					'url'   => AFSADDONWP_PRODUCT_OPTIONS_PANEL,
 				],
 				[
-					'title' => esc_html__( 'Docs', 'afs-addon' ),
-					'url'   => 'https://xenioushk.github.io/docs-plugins-addon/baf-addon/atfc/index.html',
+					'title' => '📘 Documentation',
+					'url'   => AFSADDONWP_PRODUCT_DOC,
 					'nt'    => 1,
 				],
 				[
-					'title' => esc_html__( 'Support', 'afs-addon' ),
-					'url'   => 'https://codecanyon.net/item/bwl-advanced-faq-manager/5007135/support/contact',
+					'title' => '🛟 Support',
+					'url'   => AFSADDONWP_SUPPORT,
 					'nt'    => 1,
 				],
 

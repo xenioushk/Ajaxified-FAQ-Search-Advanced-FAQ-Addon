@@ -5,7 +5,7 @@ use Xenioushk\BwlPluginApi\Api\Actions\ActionsApi;
 use AFSADDONWP\Callbacks\Actions\AfsStickyButtonCb;
 
 /**
- * Class for registering the recaptcha overlay actions.
+ * Class for registering the ajaxfied faq search actions.
  *
  * @since: 1.1.0
  * @package AFSADDONWP
@@ -13,7 +13,7 @@ use AFSADDONWP\Callbacks\Actions\AfsStickyButtonCb;
 class AfsAddonActions {
 
     /**
-	 * Register filters.
+	 * Register actions.
 	 */
     public function register() {
 

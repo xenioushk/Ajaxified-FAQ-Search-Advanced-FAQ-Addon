@@ -23,22 +23,18 @@ class Init {
 		$services = [];
 
 		$service_classes = [
-			'helpers'    => self::get_helper_classes(),
-			'base'       => self::get_base_classes(),
-			'meta'       => self::get_meta_classes(),
-			// 'cpt'           => self::get_cpt_classes(),
-			// 'cmb'           => self::get_cmb_classes(),
-			'actions'    => self::get_action_classes(),
-			// 'filters'       => self::get_filter_classes(),
-			'shortcodes' => self::get_shortcodes_classes(),
-			// 'options_panel' => self::get_options_panel_classes(),
+			'helpers'       => self::get_helper_classes(),
+			'base'          => self::get_base_classes(),
+			'meta'          => self::get_meta_classes(),
+			'actions'       => self::get_action_classes(),
+			'shortcodes'    => self::get_shortcodes_classes(),
+			'options_panel' => self::get_options_panel_classes(),
 		];
 
 		foreach ( $service_classes as $service_class ) {
 			$services = array_merge( $services, $service_class );
 		}
 		return $services;
-
 	}
 
 	/**
@@ -88,7 +84,6 @@ class Init {
 			Base\Language::class,
 			Base\FrontendAjaxHandlers::class,
 			Base\AdminAjaxHandlers::class,
-			// Base\IncludePluginFiles::class,
 		];
 		return $classes;
 	}
@@ -118,31 +113,6 @@ class Init {
 	}
 
 	/**
-	 * Get CPT classes.
-	 *
-	 * @return array
-	 */
-	private static function get_cpt_classes() {
-		$classes = [
-			Controllers\Cpt\CustomColumns::class,
-			Controllers\Actions\Admin\QuickBulkEdit::class,
-		];
-		return $classes;
-	}
-
-	/**
-	 * Get CMB classes.
-	 *
-	 * @return array
-	 */
-	private static function get_cmb_classes() {
-		$classes = [
-			Controllers\Cmb\FtfwcCmb::class,
-		];
-		return $classes;
-	}
-
-	/**
 	 * Get Action classes.
 	 *
 	 * @return array
@@ -150,18 +120,6 @@ class Init {
 	private static function get_action_classes() {
 		$classes = [
 			Controllers\Actions\AfsAddonActions::class,
-		];
-		return $classes;
-	}
-
-	/**
-	 * Get Filter classes.
-	 *
-	 * @return array
-	 */
-	private static function get_filter_classes() {
-		$classes = [
-			Controllers\Filters\AddonFilters::class,
 		];
 		return $classes;
 	}

@@ -1,12 +1,12 @@
 <?php
-namespace FTFWCWP\Callbacks\OptionsPanel;
+namespace AFSADDONWP\Callbacks\OptionsPanel;
 
 use Xenioushk\BwlPluginApi\Api\View\ViewApi;
 
 /**
  * Class for loading the settings page template.
  *
- * @package FTFWCWP
+ * @package AFSADDONWP
  * @since: 1.0.0
  * @author: Mahbub Alam Khan
  */
@@ -20,12 +20,12 @@ class SettingsPageCb extends ViewApi {
 	public function load_template() {
 
 		$data = [
-			'page_title' => esc_html__( 'FAQ Tab For WooCommerce Settings', 'baf-faqtfw' ),
-			'options_id' => FTFWCWP_OPTIONS_ID,
-			'page_id'    => 'faqftw-settings',
+			'page_title' => 'Ajaxified FAQ Search Settings',
+			'options_id' => AFSADDONWP_OPTIONS_ID,
+			'page_id'    => 'afs-settings',
 		];
 
-		$this->render( FTFWCWP_VIEWS_DIR . 'OptionsPanel/settings_page_tpl.php',$data );
+		$this->render( AFSADDONWP_VIEWS_DIR . 'OptionsPanel/settings_page_tpl.php',$data );
 
 	}
 }

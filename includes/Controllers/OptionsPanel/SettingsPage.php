@@ -1,13 +1,13 @@
 <?php
-namespace FTFWCWP\Controllers\OptionsPanel;
+namespace AFSADDONWP\Controllers\OptionsPanel;
 
-use FTFWCWP\Callbacks\OptionsPanel\SettingsPageCb;
-use FTFWCWP\Callbacks\OptionsPanel\FieldsSettings\DisplayFieldsCb;
+use AFSADDONWP\Callbacks\OptionsPanel\SettingsPageCb;
+use AFSADDONWP\Callbacks\OptionsPanel\FieldsSettings\DisplayFieldsCb;
 
 /**
  * Class for the plugin settings page.
  *
- * @package FTFWCWP
+ * @package AFSADDONWP
  * @since: 1.0.0
  */
 class SettingsPage {
@@ -18,7 +18,7 @@ class SettingsPage {
      * @note: Must be unqiue, and we will fetch data using this id.
      * @var string
      */
-    public $options_id = FTFWCWP_OPTIONS_ID;
+    public $options_id = AFSADDONWP_OPTIONS_ID;
 
     /**
      * Plugin page id.
@@ -26,7 +26,7 @@ class SettingsPage {
      * @note: Must be unique.
      * @var string
      */
-    public $ftfwc_page_id = 'faqftw-settings';
+    public $options_page_id = 'afs-settings';
 
     /**
      * Settings fields.
@@ -61,10 +61,10 @@ class SettingsPage {
 
 		add_submenu_page(
             'edit.php?post_type=bwl_advanced_faq',
-            esc_html__( 'FAQ Tab For WooCommerce Settings', 'baf-faqtfw' ),
-            esc_html__( 'WooCommerce TAB', 'baf-faqtfw' ),
+            'Ajaxified FAQ Search Settings',
+            'Ajaxified Search',
             'manage_options',
-            $this->ftfwc_page_id,
+            $this->options_page_id,
             [ $settings_page_cb, 'load_template' ]
 		);
 	}
@@ -72,7 +72,7 @@ class SettingsPage {
     /**
      * Display the settings section
      */
-	public function faqftw_display_section_cb() {
+	public function afs_display_section_cb() {
         return '';
 	}
 
@@ -100,9 +100,9 @@ class SettingsPage {
         // You can register multiple sections here.
         // Each section must be an array with a unique id.
         $sections = [
-            'faqftw_display_section' => [
-				'title'    => esc_html__( 'TAB Content Settings:', 'baf-faqtfw' ),
-				'callback' => [ $this, 'faqftw_display_section_cb' ],
+            'afs_display_section' => [
+				'title'    => esc_html__( 'Display Settings:', 'baf-faqtfw' ),
+				'callback' => [ $this, 'afs_display_section_cb' ],
             ],
         ];
 
@@ -111,7 +111,7 @@ class SettingsPage {
                 $section_id,
                 $section['title'],
                 $section['callback'],
-                $this->ftfwc_page_id
+                $this->options_page_id
             );
             $this->register_fields( $section_id );
         }
@@ -127,7 +127,7 @@ class SettingsPage {
      */
     public function get_fields( $section_id ) {
         switch ( $section_id ) {
-            case 'faqftw_display_section':
+            case 'afs_display_section':
                 return ( new DisplayFieldsCb() )->get_fields();
 			default:
                 return [];
@@ -158,7 +158,7 @@ class SettingsPage {
 				$id,
 				$field['title'],
 				$field['callback'],
-				$this->ftfwc_page_id,
+				$this->options_page_id,
 				$section_id,
 			);
 		}

@@ -118,23 +118,3 @@ class BAF_AFS_Manager {
 
     }
 }
-
-// Addon Initialization.
-
-function initBafAfsAddon() {
-    new BAF_AFS_Manager();
-}
-
-add_action( 'init', 'initBafAfsAddon' );
-
-function template_chooser( $template ) {
-    global $wp_query, $post;
-    $plugindir = __DIR__;
-    $post_type = get_query_var( 'post_type' );
-    if ( $wp_query->is_search && $post_type == 'bwl_advanced_faq' ) {
-        return locate_template( 'bwl_advanced_faq-search.php' );  // redirect to archive-search.php
-    }
-    return $template;
-}
-
-add_filter( 'template_include', 'template_chooser' );

@@ -4,7 +4,7 @@
  *
  * Template Version: 1.0.0
  *
- * @package FTFWCWP
+ * @package AFSADDONWP
  * @since 1.0.0
  */
 ?>
