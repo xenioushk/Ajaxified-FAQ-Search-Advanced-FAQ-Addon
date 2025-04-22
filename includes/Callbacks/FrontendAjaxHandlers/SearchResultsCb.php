@@ -1,6 +1,10 @@
 <?php
 namespace AFSADDONWP\Callbacks\FrontendAjaxHandlers;
 
+use BwlFaqManager\Helpers\FaqColorScheme;
+use BwlFaqManager\Controllers\Votes\FaqVoteContainer;
+use WP_Query;
+
 /**
  * Class for FAQ search results callback.
  *
@@ -170,8 +174,8 @@ class SearchResultsCb {
 
 				$results = $output;
 
-				echo json_encode( $results );
-				die();
+				echo wp_json_encode( $results );
+				wp_die();
 			}
 
 			$final_output = '';
@@ -233,7 +237,7 @@ class SearchResultsCb {
 					$content = apply_filters( 'the_content', $content );
 					$content = str_replace( ']]>', ']]&gt;', $content );
 
-					$final_output .= get_html_faq_interface( $unique_faq_container_id, $v->ID, $v->post_title, $content, $baf_like_btn_status );
+					$final_output .= $this->get_the_faq_layout( $unique_faq_container_id, $v->ID, $v->post_title, $content, $baf_like_btn_status );
 				}
 
 				$final_output .= '<div id="baf_page_navigation" class="baf_page_navigation" data-paginate="' . 1 . '" data-pag_limit="' . $pag_limit . '"></div>';
@@ -242,9 +246,90 @@ class SearchResultsCb {
 
 			}
 
-			echo $final_output;
+			echo $final_output; //phpcs:ignore
 		}
 
 		wp_die();
+	}
+
+
+	/**
+	 * Get HTML FAQ interface.
+	 *
+	 * @param string $unique_faq_container_id Unique FAQ container ID.
+	 * @param int    $post_id Post ID.
+	 * @param string $title Title.
+	 * @param string $content Content.
+	 * @param int    $baf_like_btn_status Like button status.
+	 *
+	 * @return string
+	 */
+	public function get_the_faq_layout( $unique_faq_container_id, $post_id, $title, $content, $baf_like_btn_status ) {
+
+			$id_prefix = '';
+			$output    = ''; // Open the container
+
+			/*------------------------------ Get Options For Search Settings  ---------------------------------*/
+
+			$bwl_advanced_faq_options = get_option( 'bwl_advanced_faq_options' );
+
+			$bwl_advanced_faq_search_status = 1;
+
+		if ( isset( $bwl_advanced_faq_options['bwl_advanced_faq_search_status'] ) ) {
+
+				$bwl_advanced_faq_search_status = $bwl_advanced_faq_options['bwl_advanced_faq_search_status'];
+		}
+
+			/*------------------------------ FAQ Post Date/Time Information ---------------------------------*/
+
+			$bwl_advanced_faq_meta_info_status = 0;
+
+		if ( isset( $bwl_advanced_faq_options['bwl_advanced_faq_meta_info_status'] ) ) {
+
+				$bwl_advanced_faq_meta_info_status = $bwl_advanced_faq_options['bwl_advanced_faq_meta_info_status'];
+		}
+
+			$bwl_advanced_faq_meta_info                = '';
+			$bwl_advanced_faq_show_date_time_interface = '';
+
+			/*------------------------------ FAQ Author Information ---------------------------------*/
+
+			$bwl_advanced_faq_author_info_interface = '';
+
+			/*------------------------------ Like Button Status ---------------------------------*/
+
+			$bwl_advanced_faq_like_button_interface = '';
+
+		if ( $baf_like_btn_status == 1 ) {
+
+				$faqVoteContainer                       = new FaqVoteContainer();
+				$bwl_advanced_faq_like_button_interface = $faqVoteContainer->getVoteContainer( $post_id );
+		}
+
+			// Get Author FAQ Author Information
+			$bwl_advanced_faq_author = get_post_meta( $post_id, 'bwl_advanced_faq_author', true );
+
+			$bwl_advanced_faq_author_name = ( $bwl_advanced_faq_author == '' ) ? esc_html__( 'Anonymous', 'afs-addon' ) : get_the_author_meta( 'display_name', $bwl_advanced_faq_author );
+
+			$bwl_advanced_faq_author_info_interface = "<span class='fa fa-user'></span> " . $bwl_advanced_faq_author_name . ' &nbsp;';
+
+			// Get FAQ Date and Time
+
+			$bwl_advanced_faq_show_date_time_interface = "<span class='fa fa-calendar'></span> " . get_the_date( '', $post_id ) . ' &nbsp;';
+
+		if ( $bwl_advanced_faq_meta_info_status == 1 ) {
+
+				$bwl_advanced_faq_meta_info = "<p class='bwl_meta_info'>" . $bwl_advanced_faq_author_info_interface . $bwl_advanced_faq_show_date_time_interface . '</p>';
+		}
+
+			$faqTitleTag = $bwl_advanced_faq_options['bwl_advanced_label_tag'] ?? 'label' ?: 'label'; // empty, null, or false.
+
+			$output .= '<div class="bwl-faq-container bwl-faq-container-' . $unique_faq_container_id . '" id="faq-' . $post_id . '">' .
+					'<' . $faqTitleTag . ' class="baf_schema" label_id="ac-' . $id_prefix . $post_id . '" parent_container_id="' . $unique_faq_container_id . '">' . $title . '</' . $faqTitleTag . '>' .
+					'<input id="ac-' . $id_prefix . $unique_faq_container_id . $post_id . '" name="accordion-1" type="checkbox">' .
+					'<article class="ac-medium" article_id="ac-' . $id_prefix . $post_id . '"><div class="baf_content">' . $content . $bwl_advanced_faq_meta_info . $bwl_advanced_faq_like_button_interface . '</div></article>' .
+					'</div>';
+
+			return $output;
 	}
 }

@@ -28,6 +28,7 @@ class Init {
 			'meta'       => self::get_meta_classes(),
 			// 'cpt'           => self::get_cpt_classes(),
 			// 'cmb'           => self::get_cmb_classes(),
+			'actions'    => self::get_action_classes(),
 			// 'filters'       => self::get_filter_classes(),
 			'shortcodes' => self::get_shortcodes_classes(),
 			// 'options_panel' => self::get_options_panel_classes(),
@@ -82,6 +83,7 @@ class Init {
 		$classes = [
 			Base\Enqueue::class,
 			Base\AdminEnqueue::class,
+			Base\FrontendInlineScripts::class,
 			Base\PluginUpdate::class,
 			Base\Language::class,
 			Base\FrontendAjaxHandlers::class,
@@ -136,6 +138,18 @@ class Init {
 	private static function get_cmb_classes() {
 		$classes = [
 			Controllers\Cmb\FtfwcCmb::class,
+		];
+		return $classes;
+	}
+
+	/**
+	 * Get Action classes.
+	 *
+	 * @return array
+	 */
+	private static function get_action_classes() {
+		$classes = [
+			Controllers\Actions\AfsAddonActions::class,
 		];
 		return $classes;
 	}

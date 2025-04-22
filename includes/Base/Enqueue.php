@@ -42,11 +42,34 @@ class Enqueue {
 	public function get_the_styles() {
 
 		wp_enqueue_style(
+			'afs-simple-popup',
+			AFSADDONWP_PLUGIN_LIBS_DIR . 'jquery.simple.popup/styles/popup.css',
+			[],
+			AFSADDONWP_PLUGIN_VERSION
+		);
+
+		wp_enqueue_style(
+			'afs-animate',
+			AFSADDONWP_PLUGIN_LIBS_DIR . 'animate/styles/animate.min.css',
+			[],
+			AFSADDONWP_PLUGIN_VERSION
+		);
+
+		wp_enqueue_style(
             $this->frontend_script_slug,
             AFSADDONWP_PLUGIN_STYLES_ASSETS_DIR . 'frontend.css',
             [],
             AFSADDONWP_PLUGIN_VERSION
 		);
+
+		if ( is_rtl() ) {
+			wp_enqueue_style(
+				$this->frontend_script_slug . '-rtl',
+				AFSADDONWP_PLUGIN_STYLES_ASSETS_DIR . 'frontend_rtl.css',
+				[],
+				AFSADDONWP_PLUGIN_VERSION
+			);
+		}
 	}
 
 	/**
@@ -55,10 +78,19 @@ class Enqueue {
 	public function get_the_scripts() {
 
 		// Register JS
+
+		wp_enqueue_script(
+			'afs-animate-modal',
+			AFSADDONWP_PLUGIN_LIBS_DIR . 'animated.modal/scripts/animatedModal.min.js',
+			[ 'jquery' ],
+			AFSADDONWP_PLUGIN_VERSION,
+			true
+		);
+
 		wp_enqueue_script(
             $this->frontend_script_slug,
             AFSADDONWP_PLUGIN_SCRIPTS_ASSETS_DIR . 'frontend.js',
-            [ 'jquery' ],
+            [ 'jquery', 'afs-animate-modal' ],
             AFSADDONWP_PLUGIN_VERSION,
             true
 		);

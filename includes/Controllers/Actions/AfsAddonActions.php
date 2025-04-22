@@ -1,16 +1,16 @@
 <?php
-namespace UVTADDON\Controllers\Actions;
+namespace AFSADDONWP\Controllers\Actions;
 
 use Xenioushk\BwlPluginApi\Api\Actions\ActionsApi;
-use UVTADDON\Callbacks\Actions\UvtAdminMenuCb;
+use AFSADDONWP\Callbacks\Actions\AfsStickyButtonCb;
 
 /**
  * Class for registering the recaptcha overlay actions.
  *
  * @since: 1.1.0
- * @package UVTADDON
+ * @package AFSADDONWP
  */
-class UvtAdminMenu {
+class AfsAddonActions {
 
     /**
 	 * Register filters.
@@ -21,12 +21,12 @@ class UvtAdminMenu {
         $actions_api = new ActionsApi();
 
         // Initialize callbacks.
-        $uvt_admin_menu_cb = new UvtAdminMenuCb();
+        $afs_sticky_button_cb = new AfsStickyButtonCb();
 
         $actions = [
             [
-                'tag'      => 'admin_menu',
-                'callback' => [ $uvt_admin_menu_cb, 'get_the_menu' ],
+                'tag'      => 'wp_footer',
+                'callback' => [ $afs_sticky_button_cb, 'set_sticky_button' ],
             ],
 
         ];
