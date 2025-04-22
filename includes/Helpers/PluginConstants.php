@@ -31,6 +31,12 @@ class PluginConstants {
 
 		self::$plugin_options = get_option( 'bwl_advanced_faq_options' );
 		self::$addon_options  = get_option( AFSADDONWP_OPTIONS_ID );
+
+		// Addon Installation Date Time.
+		define( 'AFSADDONWP_INSTALLATION_DATE', 'baf_afs_installation_date' );
+		if ( empty( get_option( AFSADDONWP_INSTALLATION_DATE ) ) ) {
+			update_option( AFSADDONWP_INSTALLATION_DATE, date( 'Y-m-d H:i:s' ) );
+		}
 	}
 
 	/**
@@ -131,5 +137,6 @@ class PluginConstants {
 	private static function set_product_info_constants() {
 		define( 'AFSADDONWP_PRODUCT_ID', '12033214' ); // Plugin codecanyon/themeforest Id.
 		define( 'AFSADDONWP_PRODUCT_INSTALLATION_TAG', 'baf_afs_installation_' . str_replace( '.', '_', AFSADDONWP_PLUGIN_VERSION ) );
+
 	}
 }

@@ -104,100 +104,6 @@ if ( ! defined( 'WPINC' ) ) {
 class BAF_AFS_Manager {
 
 
-    function __construct() {
-
-        // Constants.
-        define( 'AFS_PARENT_PLUGIN_TITLE', 'BWL Advanced FAQ Manager' );
-        define( 'AFS_PLUGIN_TITLE', 'Ajaxified FAQ Search - Advanced FAQ Addon' );
-        define( 'AFS_PLUGIN_VERSION', '1.1.9' );
-        define( 'AFS_PLUGIN_UPDATER_SLUG', plugin_basename( __FILE__ ) ); // change plugin current version in here.
-        define( 'AFS_PLUGIN_CC_ID', '12033214' ); // Plugin codecanyon Id.
-        define( 'AFS_PLUGIN_INSTALLATION_TAG', 'baf_afs_installation_' . str_replace( '.', '_', AFS_PLUGIN_VERSION ) );
-
-        define( 'AFS_PARENT_PURCHASE_VERIFIED_KEY', 'baf_purchase_verified' );
-
-        // Checking plugin compatibility and require parent plugin.
-        $compatibilyStatus = $this->baf_afs_compatibily_status();
-
-        // Display a notice if parent plugin is missing.
-        if ( $compatibilyStatus == 0 && is_admin() ) {
-
-            add_action( 'admin_notices', [ $this, 'afsPluginDependenciesNotice' ] );
-            return false;
-        }
-
-        // Checking purchase status.
-        $purchaseStatus = $this->getPurchaseStatus();
-
-        // Display notice if purchase code is missing.
-        if ( is_admin() && $purchaseStatus == 0 ) {
-
-            add_action( 'admin_notices', [ $this, 'bafTplPurchaseVerificationNotice' ] );
-            return false;
-        }
-        // if the compatibility and purchase code is okay
-        // then we will set the status 1.
-        $compatibilyStatus = $purchaseStatus ? 1 : 0;
-
-        // Finally, load the required files for the addon.
-
-        if ( $compatibilyStatus == 1 ) {
-
-            $this->included_files();
-            add_action( 'wp_enqueue_scripts', [ &$this, 'enqueueScripts' ] );
-            add_action( 'admin_enqueue_scripts', [ &$this, 'enqueueAdminScripts' ] );
-            add_action( 'plugins_loaded', [ $this, 'afsLoadTranslationFile' ] );
-        }
-    }
-
-    function afsLoadTranslationFile() {
-        load_plugin_textdomain( 'afs-addon', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
-    }
-
-    function baf_afs_compatibily_status() {
-        if ( class_exists( 'BwlFaqManager\\Init' ) ) {
-
-            return 1; // Parent FAQ Plugin has been installed & activated.
-
-        } else {
-
-            return 0; // Parent FAQ Plugin is not installed or activated.
-
-        }
-    }
-
-    function afsPluginDependenciesNotice() {
-        echo '<div class="notice notice-error"><p>You need to download & install '
-            . '<b><a href="https://1.envato.market/baf-wp" target="_blank">' . AFS_PARENT_PLUGIN_TITLE . '</a></b> plugin '
-            . 'to use <b>' . AFS_PLUGIN_TITLE . '</b>.</p></div>';
-    }
-
-    /**
-     * Check the purchase status.
-     *
-     * @since: 1.1.7
-     * @return bool
-     */
-    public function getPurchaseStatus() {
-        return get_option( AFS_PARENT_PURCHASE_VERIFIED_KEY ) == 1 ? 1 : 0;
-    }
-
-    /**
-     * Display prompt notice to verify license.
-     *
-     * @since: 1.1.7
-     * @return string
-     */
-    public function bafTplPurchaseVerificationNotice() {
-        $licensePage = admin_url( 'admin.php?page=baf-license' );
-
-        echo '<div class="notice notice-error"><p class="bwl_plugins_notice_text">
-        <span class="dashicons dashicons-lock bwl_plugins_notice_text--danger"></span> 
-        You need to <a href="' . $licensePage . '" class="bwl_plugins_notice_text--danger bwl_plugins_notice_text--bold">ACTIVATE</a> the '
-            . '<b>' . AFS_PARENT_PLUGIN_TITLE . '</b> plugin '
-            . 'to use <b>' . AFS_PLUGIN_TITLE . '</b>. </p></div>';
-    }
-
     /**
      * Include addon required files.
      *
@@ -207,60 +113,9 @@ class BAF_AFS_Manager {
 
         if ( is_admin() ) {
 
-            // Addon Installation Date Time.
-            if ( empty( get_option( 'baf_afs_installation_date' ) ) ) {
-                update_option( 'baf_afs_installation_date', date( 'Y-m-d H:i:s' ) );
-            }
-
             include_once __DIR__ . '/includes/settings/afs-admin-settings.php'; // Load plugins option panel.
-            include_once __DIR__ . '/includes/autoupdater/WpAutoUpdater.php';
-            include_once __DIR__ . '/includes/autoupdater/installer.php';
-            include_once __DIR__ . '/includes/autoupdater/updater.php';
-        } else {
-
-            include_once __DIR__ . '/includes/afs-custom-theme.php';
-            include_once __DIR__ . '/includes/afs-helpers.php';
-            include_once __DIR__ . '/includes/shortcode/afs-shortcodes.php';
         }
 
-        include_once __DIR__ . '/includes/afs-ajax-search.php';
-    }
-
-    /**
-     * Include addon front-end scripts.
-     *
-     * @since: 1.0.0
-     */
-    function enqueueScripts() {
-
-        wp_enqueue_style( 'afs-simple-popup', plugins_url( 'libs/jquery.simple.popup/styles/popup.css', __FILE__ ), [], AFS_PLUGIN_VERSION );
-        wp_enqueue_style( 'afs-animate', plugins_url( 'libs/animate/styles/animate.min.css', __FILE__ ), [], AFS_PLUGIN_VERSION );
-        wp_enqueue_style( 'afs-frontend', plugins_url( 'assets/styles/frontend.css', __FILE__ ), [], AFS_PLUGIN_VERSION );
-
-        if ( is_rtl() ) {
-            wp_enqueue_style( 'afs-frontend-rtl', plugins_url( 'assets/styles/frontend_rtl.css', __FILE__ ), [], AFS_PLUGIN_VERSION );
-        }
-
-        wp_register_script( 'afs-animate-modal', plugins_url( 'libs/animated.modal/scripts/animatedModal.min.js', __FILE__ ), [ 'jquery' ], AFS_PLUGIN_VERSION, true );
-        wp_enqueue_script( 'afs-frontend', plugins_url( 'assets/scripts/frontend.js', __FILE__ ), [ 'jquery', 'afs-animate-modal' ], AFS_PLUGIN_VERSION, true );
-    }
-
-    /**
-     * Include addon back-end scripts.
-     *
-     * @since: 1.0.0
-     */
-    function enqueueAdminScripts() {
-        wp_enqueue_script( 'afs-admin', plugins_url( 'assets/scripts/admin.js', __FILE__ ), [ 'jquery', 'wp-color-picker' ], AFS_PLUGIN_VERSION, true );
-
-        wp_localize_script(
-            'afs-admin',
-            'BafAfsAdminData',
-            [
-                'product_id'   => AFS_PLUGIN_CC_ID,
-                'installation' => get_option( AFS_PLUGIN_INSTALLATION_TAG ),
-            ]
-        );
     }
 }
 

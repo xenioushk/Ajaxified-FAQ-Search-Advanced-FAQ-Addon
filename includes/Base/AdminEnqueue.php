@@ -46,7 +46,7 @@ class AdminEnqueue {
 				wp_enqueue_script(
 					$this->admin_script_slug,
 					AFSADDONWP_PLUGIN_SCRIPTS_ASSETS_DIR . 'admin.js',
-					[ 'jquery', 'jquery-ui-core', 'jquery-ui-sortable' ],
+					[ 'jquery', 'wp-color-picker' ],
 					AFSADDONWP_PLUGIN_VERSION, true
 				);
 
