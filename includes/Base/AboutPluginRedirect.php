@@ -1,10 +1,10 @@
 <?php
-namespace FTFWCWP\Base;
+namespace AFSADDONWP\Base;
 
 /**
  * Class for plucin redirection to about page.
  *
- * @package FTFWCWP
+ * @package AFSADDONWP
  */
 class AboutPluginRedirect {
 

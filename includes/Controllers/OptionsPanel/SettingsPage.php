@@ -60,7 +60,7 @@ class SettingsPage {
 		$settings_page_cb = new SettingsPageCb();
 
 		add_submenu_page(
-            'edit.php?post_type=bwl_advanced_faq',
+            'edit.php?post_type=' . BAF_POST_TYPE,
             'Ajaxified FAQ Search Settings',
             'Ajaxified Search',
             'manage_options',

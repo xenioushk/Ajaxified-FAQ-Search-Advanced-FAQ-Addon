@@ -9,13 +9,6 @@ namespace AFSADDONWP\Helpers;
 class PluginConstants {
 
 		/**
-         * Static property to hold plugin options.
-         *
-         * @var array
-         */
-	public static $plugin_options = [];
-
-		/**
          * Static property to hold addon options.
          *
          * @var array
@@ -29,8 +22,7 @@ class PluginConstants {
 
 		define( 'AFSADDONWP_OPTIONS_ID', 'afs_options' );
 
-		self::$plugin_options = get_option( 'bwl_advanced_faq_options' );
-		self::$addon_options  = get_option( AFSADDONWP_OPTIONS_ID );
+		self::$addon_options = get_option( AFSADDONWP_OPTIONS_ID );
 
 		// Addon Installation Date Time.
 		define( 'AFSADDONWP_INSTALLATION_DATE', 'baf_afs_installation_date' );
