@@ -1,12 +1,12 @@
 <?php
-namespace FTFWCWP\Base;
+namespace AFSADDONWP\Base;
 
 use Xenioushk\BwlPluginApi\Api\AjaxHandlers\AjaxHandlersApi;
-use FTFWCWP\Callbacks\AdminAjaxHandlers\PluginInstallationCb;
+use AFSADDONWP\Callbacks\AdminAjaxHandlers\PluginInstallationCb;
 /**
  * Class for admin ajax handlers.
  *
- * @package FTFWCWP
+ * @package AFSADDONWP
  */
 class AdminAjaxHandlers {
 
@@ -24,7 +24,7 @@ class AdminAjaxHandlers {
 		// If do so, you need to change in js file too.
 		$ajax_requests = [
 			[
-				'tag'      => 'baf_ftfwc_installation_counter',
+				'tag'      => 'baf_afs_installation_counter',
 				'callback' => [ $plugin_installation_cb, 'save' ],
 			],
 		];

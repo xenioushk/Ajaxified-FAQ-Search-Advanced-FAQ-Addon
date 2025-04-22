@@ -24,7 +24,7 @@ class Init {
 
 		$service_classes = [
 			'helpers'    => self::get_helper_classes(),
-			// 'base'          => self::get_base_classes(),
+			'base'       => self::get_base_classes(),
 			'meta'       => self::get_meta_classes(),
 			// 'cpt'           => self::get_cpt_classes(),
 			// 'cmb'           => self::get_cmb_classes(),
@@ -84,8 +84,9 @@ class Init {
 			Base\AdminEnqueue::class,
 			Base\PluginUpdate::class,
 			Base\Language::class,
+			Base\FrontendAjaxHandlers::class,
 			Base\AdminAjaxHandlers::class,
-			Base\IncludePluginFiles::class,
+			// Base\IncludePluginFiles::class,
 		];
 		return $classes;
 	}

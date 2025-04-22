@@ -1,5 +1,5 @@
 <?php
-namespace FTFWCWP\Traits;
+namespace AFSADDONWP\Traits;
 
 trait OptionsFieldsTraits {
 

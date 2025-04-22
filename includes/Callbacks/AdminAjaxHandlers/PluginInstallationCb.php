@@ -1,12 +1,12 @@
 <?php
-namespace FTFWCWP\Callbacks\AdminAjaxHandlers;
+namespace AFSADDONWP\Callbacks\AdminAjaxHandlers;
 
-use FTFWCWP\Traits\PluginInstallationTraits;
+use AFSADDONWP\Traits\PluginInstallationTraits;
 
 /**
  * Class for plugin installation callback.
  *
- * @package FTFWCWP
+ * @package AFSADDONWP
  */
 class PluginInstallationCb {
 
@@ -29,9 +29,9 @@ class PluginInstallationCb {
 
 		$api_url    = $this->bwl_api_url();
 		$site_url   = get_site_url();
-		$product_id = FTFWCWP_PRODUCT_ID;
+		$product_id = AFSADDONWP_PRODUCT_ID;
 		$ip         = $_SERVER['REMOTE_ADDR'];
-		$ver        = FTFWCWP_PLUGIN_VERSION;
+		$ver        = AFSADDONWP_PLUGIN_VERSION;
 		$requestUrl = $api_url . "wp-json/bwlapi/v1/installation/count?product_id=$product_id&site=$site_url&referer=$ip&ver=$ver";
 
 		$output = wp_remote_get( $requestUrl );
@@ -44,7 +44,7 @@ class PluginInstallationCb {
 
 			if ( isset( $output_decode['status'] ) && $output_decode['status'] != 0 ) {
 
-				update_option( FTFWCWP_PRODUCT_INSTALLATION_TAG, 1 ); // change the tag
+				update_option( AFSADDONWP_PRODUCT_INSTALLATION_TAG, 1 ); // change the tag
 
 				$data = [
 					'status' => $output_decode['status'],

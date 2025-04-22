@@ -1,10 +1,10 @@
 <?php
-namespace FTFWCWP\Base;
+namespace AFSADDONWP\Base;
 
 /**
  * Class for registering the plugin admin scripts and styles.
  *
- * @package FTFWCWP
+ * @package AFSADDONWP
  */
 class AdminEnqueue {
 
@@ -21,7 +21,7 @@ class AdminEnqueue {
 	public function __construct() {
 		// Frontend script slug.
 		// This is required to hook the loclization texts.
-		$this->admin_script_slug = 'baf-faqtfw-admin';
+		$this->admin_script_slug = 'baf-afs-admin';
 	}
 
 	/**
@@ -38,16 +38,16 @@ class AdminEnqueue {
 
 		wp_enqueue_style(
 			$this->admin_script_slug,
-			FTFWCWP_PLUGIN_STYLES_ASSETS_DIR . 'admin.css',
+			AFSADDONWP_PLUGIN_STYLES_ASSETS_DIR . 'admin.css',
 			[],
-			FTFWCWP_PLUGIN_VERSION
+			AFSADDONWP_PLUGIN_VERSION
 		);
 
 				wp_enqueue_script(
 					$this->admin_script_slug,
-					FTFWCWP_PLUGIN_SCRIPTS_ASSETS_DIR . 'admin.js',
+					AFSADDONWP_PLUGIN_SCRIPTS_ASSETS_DIR . 'admin.js',
 					[ 'jquery', 'jquery-ui-core', 'jquery-ui-sortable' ],
-					FTFWCWP_PLUGIN_VERSION, true
+					AFSADDONWP_PLUGIN_VERSION, true
 				);
 
 				$this->get_the_localization_texts();
@@ -63,12 +63,12 @@ class AdminEnqueue {
 		// Access data: BafFtfwcAdminData.version
 		wp_localize_script(
             $this->admin_script_slug,
-            'BafFtfwcAdminData',
+            'BafAfsAdminData',
             [
-				'version'      => FTFWCWP_PLUGIN_VERSION,
+				'version'      => AFSADDONWP_PLUGIN_VERSION,
 				'ajaxurl'      => esc_url( admin_url( 'admin-ajax.php' ) ),
-				'product_id'   => FTFWCWP_PRODUCT_ID,
-				'installation' => get_option( FTFWCWP_PRODUCT_INSTALLATION_TAG ),
+				'product_id'   => AFSADDONWP_PRODUCT_ID,
+				'installation' => get_option( AFSADDONWP_PRODUCT_INSTALLATION_TAG ),
 			]
 		);
 	}

@@ -1,12 +1,12 @@
 <?php
-namespace FTFWCWP\Base;
+namespace AFSADDONWP\Base;
 
-use FTFWCWP\Helpers\PluginConstants;
+use AFSADDONWP\Helpers\PluginConstants;
 
 /**
  * Class for registering the plugin scripts and styles.
  *
- * @package FTFWCWP
+ * @package AFSADDONWP
  */
 class Enqueue {
 
@@ -23,7 +23,7 @@ class Enqueue {
 	public function __construct() {
 		// Frontend script slug.
 		// This is required to hook the loclization texts.
-		$this->frontend_script_slug = 'baf-faqtfw-frontend';
+		$this->frontend_script_slug = 'baf-afs-frontend';
 	}
 
 	/**
@@ -43,9 +43,9 @@ class Enqueue {
 
 		wp_enqueue_style(
             $this->frontend_script_slug,
-            FTFWCWP_PLUGIN_STYLES_ASSETS_DIR . 'frontend.css',
+            AFSADDONWP_PLUGIN_STYLES_ASSETS_DIR . 'frontend.css',
             [],
-            FTFWCWP_PLUGIN_VERSION
+            AFSADDONWP_PLUGIN_VERSION
 		);
 	}
 
@@ -57,9 +57,9 @@ class Enqueue {
 		// Register JS
 		wp_enqueue_script(
             $this->frontend_script_slug,
-            FTFWCWP_PLUGIN_SCRIPTS_ASSETS_DIR . 'frontend.js',
+            AFSADDONWP_PLUGIN_SCRIPTS_ASSETS_DIR . 'frontend.js',
             [ 'jquery' ],
-            FTFWCWP_PLUGIN_VERSION,
+            AFSADDONWP_PLUGIN_VERSION,
             true
 		);
 
@@ -74,16 +74,13 @@ class Enqueue {
 
 		// Localize scripts.
 		// Frontend.
-		// Access data: BafFtfwcData.version
-
-		$show_faq_counter = PluginConstants::$addon_options['faqftw_faq_counter'] ?? 1;
+		// Access data: BafAfsData.version
 
 		wp_localize_script(
             $this->frontend_script_slug,
-            'BafFtfwcData',
+            'BafAfsData',
             [
-				'version'            => FTFWCWP_PLUGIN_VERSION,
-				'faqftw_faq_counter' => $show_faq_counter,
+				'version' => AFSADDONWP_PLUGIN_VERSION,
 			]
 		);
 	}
