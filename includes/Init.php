@@ -23,13 +23,13 @@ class Init {
 		$services = [];
 
 		$service_classes = [
-			'helpers' => self::get_helper_classes(),
+			'helpers'    => self::get_helper_classes(),
 			// 'base'          => self::get_base_classes(),
-			'meta'    => self::get_meta_classes(),
+			'meta'       => self::get_meta_classes(),
 			// 'cpt'           => self::get_cpt_classes(),
 			// 'cmb'           => self::get_cmb_classes(),
 			// 'filters'       => self::get_filter_classes(),
-			// 'shortcodes'    => self::get_shortcodes_classes(),
+			'shortcodes' => self::get_shortcodes_classes(),
 			// 'options_panel' => self::get_options_panel_classes(),
 		];
 

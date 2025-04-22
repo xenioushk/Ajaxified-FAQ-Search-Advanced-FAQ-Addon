@@ -1,13 +1,13 @@
 <?php
-namespace FTFWCWP\Controllers\Shortcodes;
+namespace AFSADDONWP\Controllers\Shortcodes;
 
 use Xenioushk\BwlPluginApi\Api\Shortcodes\ShortcodesApi;
-use FTFWCWP\Callbacks\Shortcodes\WooFaqTabCb;
+use AFSADDONWP\Callbacks\Shortcodes\SearchCb;
 /**
  * Class for Addon shortcodes.
  *
  * @since: 1.1.0
- * @package FTFWCWP
+ * @package AFSADDONWP
  */
 class AddonShortcodes {
 
@@ -19,13 +19,13 @@ class AddonShortcodes {
         $shortcodes_api = new ShortcodesApi();
 
         // Initialize callbacks.
-        $woo_faq_tab_cb = new WooFaqTabCb();
+        $search_cb = new SearchCb();
 
         // All Shortcodes.
         $shortcodes = [
             [
-                'tag'      => 'baf_woo_tab',
-                'callback' => [ $woo_faq_tab_cb, 'get_the_output' ],
+                'tag'      => 'afs_search',
+                'callback' => [ $search_cb, 'get_the_output' ],
             ],
         ];
 
