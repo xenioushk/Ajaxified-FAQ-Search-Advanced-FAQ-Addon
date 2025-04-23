@@ -90,31 +90,3 @@ function init_afs_addon_wp() {
 }
 
 add_action( 'init', __NAMESPACE__ . '\\init_afs_addon_wp' );
-
-
-return;
-
-
-
-// If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-    die;
-}
-
-class BAF_AFS_Manager {
-
-
-    /**
-     * Include addon required files.
-     *
-     * @since: 1.0.0
-     */
-    function included_files() {
-
-        if ( is_admin() ) {
-
-            include_once __DIR__ . '/includes/settings/afs-admin-settings.php'; // Load plugins option panel.
-        }
-
-    }
-}

@@ -14,7 +14,7 @@
 
     <?php if ( isset( $_GET['settings-updated'] ) ) { ?>
     <div id="message" class="updated">
-    <p><strong>✅ <?php esc_html_e( 'Settings saved.', 'baf-faqtfw' ); ?></strong></p>
+    <p><strong>✅ <?php esc_html_e( 'Settings saved.', 'afs-addon' ); ?></strong></p>
     </div>
     <?php } ?>
 
@@ -27,7 +27,7 @@
 
     <p class="submit">
         <input name="submit" type="submit" class="button-primary"
-        value="<?php esc_html_e( 'Save Settings', 'baf-faqtfw' ); ?>" />
+        value="<?php esc_html_e( 'Save Settings', 'afs-addon' ); ?>" />
     </p>
     </form>
 

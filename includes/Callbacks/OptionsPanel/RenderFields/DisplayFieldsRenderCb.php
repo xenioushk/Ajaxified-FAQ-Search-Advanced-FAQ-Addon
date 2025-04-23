@@ -2,7 +2,7 @@
 namespace AFSADDONWP\Callbacks\OptionsPanel\RenderFields;
 
 use AFSADDONWP\Helpers\PluginConstants;
-use AFSADDONWP\Traits\OptionsFieldsTraits;
+use BwlFaqManager\Traits\OptionsFieldsTraits;
 
 /**
  * Class for rendering the fields.
@@ -75,7 +75,7 @@ class DisplayFieldsRenderCb {
 		$field_name = $this->options_id . "[{$field_id}]";
 		$value      = $this->options[ $field_id ] ?? esc_html__( 'Search Keywords (how to, what is )..... ', 'afs-addon' );
 
-		echo $this->get_text_field( $field_name, $field_id, $value,'', 'large-text' ); //phpcs:ignore
+		echo $this->get_text_field( $field_name, $field_id, $value,'', 'regular-text' ); //phpcs:ignore
 
 	}
 

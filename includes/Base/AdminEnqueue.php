@@ -60,7 +60,7 @@ class AdminEnqueue {
 
 		// Localize scripts.
 		// Frontend.
-		// Access data: BafFtfwcAdminData.version
+		// Access data: BafAfsAdminData.version
 		wp_localize_script(
             $this->admin_script_slug,
             'BafAfsAdminData',
