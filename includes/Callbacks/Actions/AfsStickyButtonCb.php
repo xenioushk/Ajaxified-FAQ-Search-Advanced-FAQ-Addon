@@ -1,7 +1,7 @@
 <?php
 namespace AFSADDONWP\Callbacks\Actions;
 
-use Xenioushk\BwlPluginApi\Api\View\ViewApi;
+use AFSADDONWP\Helpers\PluginConstants;
 
 /**
  * Class for registering recaptcha overlay actions.
@@ -17,29 +17,16 @@ class AfsStickyButtonCb {
 	 */
 	public function set_sticky_button() {
 
-		$afs_data = get_option( 'afs_options' );
+		$options = PluginConstants::$addon_options;
 
-		$afs_sticky_status             = 1;
-		$afs_sticky_search_result_type = 0; // 0=Accordion & 1=Suggestion Box.
-		$afs_placeholder_text          = esc_html__( 'Search Keywords (how to, what is )..... ', 'afs-addon' );
+		$afs_sticky_status = $options['afs_sticky_status'] ?? 1;
+		// 0=Accordion , 1=Suggestion Box
+		$afs_sticky_search_result_type = $options['afs_sticky_search_result_type'] ?? 0;
+		$afs_placeholder_text          = $options['afs_placeholder_text'] ?? esc_html__( 'Search Keywords (how to, what is )..... ', 'afs-addon' );
 
 		$afs_sticky_html = '';
 
-		if ( isset( $afs_data['afs_sticky_status'] ) && $afs_data['afs_sticky_status'] == 0 ) {
-			$afs_sticky_status = 0;
-		}
-
-		if ( isset( $afs_data['afs_sticky_search_result_type'] ) && $afs_data['afs_sticky_search_result_type'] == 1 ) {
-			$afs_sticky_search_result_type = 1;
-		}
-
-		if ( isset( $afs_data['afs_placeholder_text'] ) && $afs_data['afs_placeholder_text'] != '' ) {
-			$afs_placeholder_text = $afs_data['afs_placeholder_text'];
-		}
-
 		if ( $afs_sticky_status == 1 ) {
-
-			wp_enqueue_script( 'afs-custom-script' ); // Fixed in version 1.0.1
 
 			$afs_search_html         = '';
 			$afs_search_modal_window = '';
@@ -57,10 +44,6 @@ class AfsStickyButtonCb {
             . do_shortcode( "[afs_search sugg_box='" . $afs_sticky_search_result_type . "' placeholder='" . $afs_placeholder_text . "'/]" ) .
             '</div>
                                                         </div>';
-
-			$afs_search_modal_window .= '<div id="popup1" style="display:none;">
-                <h2>Test Form</h2>
-            </div>';
 
 			$afs_sticky_html .= '<div class="afs-sticky-container">
                                             <ul class="afs-sticky">

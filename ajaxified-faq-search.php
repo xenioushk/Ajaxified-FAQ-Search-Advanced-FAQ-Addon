@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name: Ajaxified FAQ Search - Advanced FAQ Addon
  * Plugin URI: https://bluewindlab.net/portfolio/ajaxified-faq-search-advanced-faq-addon/

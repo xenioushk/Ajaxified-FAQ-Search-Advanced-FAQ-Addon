@@ -17,7 +17,6 @@ class FrontendInlineScripts {
 	 */
 	public function register() {
 		add_action( 'wp_head', [ $this, 'set_inline_styles' ] );
-		add_action( 'wp_head', [ $this, 'set_inline_scripts' ] );
 	}
 
 	/**
@@ -60,30 +59,4 @@ class FrontendInlineScripts {
 
         echo $afs_custom_theme; // phpcs:ignore
 	}
-
-    /**
-	 * Set the inline scripts.
-	 */
-    public function set_inline_scripts() {
-
-        $afs_data = PluginConstants::$addon_options;
-
-        $afs_search_window_color  = $afs_data['afs_search_window_color'] ?? '#3498DB';
-        $afs_window_in_animation  = $afs_data['afs_window_in_animation'] ?? 'zoomIn';
-        $afs_window_out_animation = $afs_data['afs_window_out_animation'] ?? 'bounceOutDown';
-
-		?>
-
-
-<script type="text/javascript" id="afsaddon-custom-script">
-var ajaxurl = '<?php echo admin_url( 'admin-ajax.php' ); ?>',
-    afs_search_window_color = '<?php echo $afs_search_window_color; ?>',
-    afs_window_in_animation = '<?php echo $afs_window_in_animation; ?>',
-    afs_window_out_animation = '<?php echo $afs_window_out_animation; ?>',
-    afs_search_no_results_msg = '<?php esc_html_e( 'Sorry Nothing Found!', 'afs-addon' ); ?>';
-</script>
-
-		<?php
-
-    }
 }

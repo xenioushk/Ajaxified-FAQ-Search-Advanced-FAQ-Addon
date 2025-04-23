@@ -149,7 +149,7 @@ class DisplayFieldsRenderCb {
 
 		$field_id   = 'afs_window_in_animation'; // change the id.
 		$field_name = $this->options_id . "[{$field_id}]";
-		$value      = $this->options[ $field_id ] ?? ''; // change default value.
+		$value      = $this->options[ $field_id ] ?? 'zoomIn'; // change default value.
 
 		echo $this->get_select_field( $field_name, $field_id, $options, $value  ); //phpcs:ignore
 
@@ -161,7 +161,6 @@ class DisplayFieldsRenderCb {
 	public function get_search_window_out() {
 
 		$options = [
-			'bounce'             => 'bounce',
 			'bounceOut'          => 'bounce Out',
 			'bounceOutDown'      => 'bounce Out Down',
 			'bounceOutLeft'      => 'bounce Out Left',
@@ -200,7 +199,7 @@ class DisplayFieldsRenderCb {
 
 		$field_id   = 'afs_window_out_animation'; // change the id.
 		$field_name = $this->options_id . "[{$field_id}]";
-		$value      = $this->options[ $field_id ] ?? ''; // change default value.
+		$value      = $this->options[ $field_id ] ?? 'zoomOut'; // change default value.
 
 		echo $this->get_select_field( $field_name, $field_id, $options, $value  ); //phpcs:ignore
 

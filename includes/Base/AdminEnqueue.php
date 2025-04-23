@@ -36,13 +36,6 @@ class AdminEnqueue {
      */
 	public function get_the_scripts() {
 
-		wp_enqueue_style(
-			$this->admin_script_slug,
-			AFSADDONWP_PLUGIN_STYLES_ASSETS_DIR . 'admin.css',
-			[],
-			AFSADDONWP_PLUGIN_VERSION
-		);
-
 				wp_enqueue_script(
 					$this->admin_script_slug,
 					AFSADDONWP_PLUGIN_SCRIPTS_ASSETS_DIR . 'admin.js',

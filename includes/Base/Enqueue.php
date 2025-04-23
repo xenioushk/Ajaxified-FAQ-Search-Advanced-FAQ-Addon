@@ -18,12 +18,21 @@ class Enqueue {
 	private $frontend_script_slug;
 
 	/**
+	 * Plugin options.
+	 *
+	 * @var string $options
+	 */
+
+	private $options;
+
+	/**
 	 * Constructor.
 	 */
 	public function __construct() {
 		// Frontend script slug.
 		// This is required to hook the loclization texts.
 		$this->frontend_script_slug = 'baf-afs-frontend';
+		$this->options              = PluginConstants::$addon_options;
 	}
 
 	/**
@@ -108,11 +117,19 @@ class Enqueue {
 		// Frontend.
 		// Access data: BafAfsData.version
 
+		$window_in_animation  = $this->options['afs_window_in_animation'] ?? 'zoomIn';
+		$window_out_animation = $this->options['afs_window_out_animation'] ?? 'zoomOut';
+		$search_window_color  = $this->options['afs_search_window_color'] ?? '#3498DB';
+
 		wp_localize_script(
             $this->frontend_script_slug,
             'BafAfsData',
             [
-				'version' => AFSADDONWP_PLUGIN_VERSION,
+				'version'                   => AFSADDONWP_PLUGIN_VERSION,
+				'afs_window_in_animation'   => $window_in_animation,
+				'afs_window_out_animation'  => $window_out_animation,
+				'afs_search_window_color'   => $search_window_color,
+				'afs_search_no_results_msg' => esc_html__( 'Sorry Nothing Found!', 'afs-addon' ),
 			]
 		);
 	}

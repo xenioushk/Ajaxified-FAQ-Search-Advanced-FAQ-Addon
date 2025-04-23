@@ -1,136 +1,134 @@
-# Copyright (C) 2024 Mahbub Alam Khan
+# Copyright (C) 2025 Mahbub Alam Khan
 # This file is distributed under the same license as the Ajaxified FAQ Search - Advanced FAQ Addon plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ajaxified FAQ Search - Advanced FAQ Addon 1.1.8\n"
+"Project-Id-Version: Ajaxified FAQ Search - Advanced FAQ Addon 2.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ajaxified-faq-search\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-08T23:39:54+00:00\n"
+"POT-Creation-Date: 2025-04-23T16:14:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.9.0\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: afs-addon\n"
 
 #. Plugin Name of the plugin
+#: ajaxified-faq-search.php
 msgid "Ajaxified FAQ Search - Advanced FAQ Addon"
 msgstr ""
 
 #. Plugin URI of the plugin
+#: ajaxified-faq-search.php
 msgid "https://bluewindlab.net/portfolio/ajaxified-faq-search-advanced-faq-addon/"
 msgstr ""
 
 #. Description of the plugin
+#: ajaxified-faq-search.php
 msgid "The Ajaxified FAQ Search is an add-on specifically designed for the BWL Advanced FAQ Manager plugin. This add-on enhances the functionality of the FAQ Manager by introducing a quick and efficient way to search for frequently asked questions."
 msgstr ""
 
 #. Author of the plugin
+#: ajaxified-faq-search.php
 msgid "Mahbub Alam Khan"
 msgstr ""
 
 #. Author URI of the plugin
+#: ajaxified-faq-search.php
 msgid "https://codecanyon.net/user/xenioushk"
 msgstr ""
 
-#: includes/afs-ajax-search.php:179
-#: includes/afs-helpers.php:40
+#: includes/Base/Enqueue.php:132
+#: includes/Callbacks/FrontendAjaxHandlers/SearchResultsCb.php:185
 msgid "Sorry Nothing Found!"
 msgstr ""
 
-#: includes/afs-ajax-search.php:301
-msgid "Anonymous"
-msgstr ""
-
-#: includes/afs-helpers.php:60
-#: includes/settings/afs-admin-settings.php:76
-#: includes/shortcode/afs-shortcodes.php:11
+#: includes/Callbacks/Actions/AfsStickyButtonCb.php:25
+#: includes/Callbacks/OptionsPanel/RenderFields/DisplayFieldsRenderCb.php:76
+#: includes/Callbacks/Shortcodes/SearchCb.php:24
 msgid "Search Keywords (how to, what is )..... "
 msgstr ""
 
-#: includes/afs-helpers.php:85
+#: includes/Callbacks/Actions/AfsStickyButtonCb.php:35
 msgid "Search FAQ"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:14
-msgid "Ajaxified FAQ Search Settings"
+#: includes/Callbacks/FrontendAjaxHandlers/SearchResultsCb.php:312
+msgid "Anonymous"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:18
-msgid "Settings saved."
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:25
+msgid "Display Sticky Button?"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:28
-msgid "Save Settings"
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:29
+msgid "Sticky Search Output Type:"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:48
-msgid "Display Settings: "
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:33
+msgid "Search Placeholder Text"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:49
-msgid "Display Sticky Button? "
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:37
+msgid "Sticky Container Background:"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:50
-msgid "Sticky Search Output Type: "
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:41
+msgid "Search Window Background:"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:51
-msgid "Search Placeholder Text: "
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:45
+msgid "Window In Animation"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:53
-msgid "Sticky Container Background: "
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:49
+msgid "Window Out Animation"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:54
-msgid "Search Window Background: "
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:53
+msgid "FAQ Pagination(Item Per Page)"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:55
-msgid "Window In Animation: "
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:57
+msgid "Suggestion Box Background"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:56
-msgid "Window Out Animation: "
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:61
+msgid "Suggestion Text Background"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:57
-msgid "FAQ Pagination(Item Per Page): "
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:65
+msgid "Suggestion Text Hover Color"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:59
-msgid "Suggestion Box Background: "
-msgstr ""
-
-#: includes/settings/afs-admin-settings.php:60
-msgid "Suggestion Text Color: "
-msgstr ""
-
-#: includes/settings/afs-admin-settings.php:61
-msgid "Suggestion Text Hover Color: "
-msgstr ""
-
-#: includes/settings/afs-admin-settings.php:163
+#: includes/Callbacks/OptionsPanel/RenderFields/DisplayFieldsRenderCb.php:61
 msgid "Accordion (Default)"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:164
+#: includes/Callbacks/OptionsPanel/RenderFields/DisplayFieldsRenderCb.php:62
 msgid "Suggestion Box"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:200
-msgid "Show"
+#. translators: 1: Plugin name, 2: Addon title, 3: Current version, 4: Minimum required version
+#: includes/Helpers/DependencyManager.php:102
+msgid "The %2$s requires %1$s %4$s or higher. You are using %3$s"
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:201
-msgid "Hide"
+#. translators: 1: Plugin name, 2: Addon title
+#: includes/Helpers/DependencyManager.php:121
+msgid "Please install and activate the %1$s plugin to use %2$s."
 msgstr ""
 
-#: includes/settings/afs-admin-settings.php:228
-#: includes/settings/afs-admin-settings.php:271
-#: includes/settings/afs-admin-settings.php:353
-msgid "Select"
+#. translators: 1: Plugin activation link, 2: Addon title
+#: includes/Helpers/DependencyManager.php:138
+msgid "Please Activate the %1$s to use the %2$s."
+msgstr ""
+
+#: includes/Views/Admin/OptionsPanel/tpl_settings_page.php:17
+msgid "Settings saved."
+msgstr ""
+
+#: includes/Views/Admin/OptionsPanel/tpl_settings_page.php:30
+msgid "Save Settings"
 msgstr ""

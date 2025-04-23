@@ -94,7 +94,7 @@
             search_result_html += '<li><a href="' + result.link + '">' + result.title + "</a></li>"
           })
         } else {
-          search_result_html += '<li class="nothing-found">' + afs_search_no_results_msg + "</li>"
+          search_result_html += '<li class="nothing-found">' + BafAfsData.afs_search_no_results_msg + "</li>"
         }
 
         search_result_html += "</ul>"

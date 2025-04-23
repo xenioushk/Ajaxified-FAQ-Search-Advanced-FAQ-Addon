@@ -44,9 +44,9 @@
 
       $("#asf_modal_trigger").animatedModal({
         modalTarget: "asf_animated_modal",
-        animatedIn: afs_window_in_animation,
-        animatedOut: afs_window_out_animation,
-        color: afs_search_window_color,
+        animatedIn: BafAfsData.afs_window_in_animation,
+        animatedOut: BafAfsData.afs_window_out_animation,
+        color: BafAfsData.afs_search_window_color,
         // Callbacks
         beforeOpen: function () {
           //            console.log("The animation was called");
