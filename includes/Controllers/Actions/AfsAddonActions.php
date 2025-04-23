@@ -5,7 +5,7 @@ use Xenioushk\BwlPluginApi\Api\Actions\ActionsApi;
 use AFSADDONWP\Callbacks\Actions\AfsStickyButtonCb;
 
 /**
- * Class for registering the ajaxfied faq search actions.
+ * Class for registering the plugin actions.
  *
  * @since: 1.1.0
  * @package AFSADDONWP

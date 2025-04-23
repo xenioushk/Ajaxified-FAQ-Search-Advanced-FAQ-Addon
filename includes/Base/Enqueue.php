@@ -20,7 +20,7 @@ class Enqueue {
 	/**
 	 * Plugin options.
 	 *
-	 * @var string $options
+	 * @var array $options
 	 */
 
 	private $options;
