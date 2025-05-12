@@ -47,7 +47,7 @@ class SettingsPage {
      */
     public function initialize() {
         // Initialize the settings page.
-        add_action( 'admin_menu',  [ $this, 'register_options_page' ] );
+        add_action( 'admin_menu',  [ $this, 'register_options_page' ], 11 );
 		add_action( 'admin_init',  [ $this, 'register_settings_fields' ] );
     }
 
