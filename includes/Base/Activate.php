@@ -4,7 +4,7 @@ namespace AFSADDONWP\Base;
 /**
  * Class for plucin activation.
  *
- * @since: 1.1.0
+ * @since: 2.0.0
  * @package AFSADDONWP
  */
 class Activate {

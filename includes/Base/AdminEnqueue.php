@@ -4,6 +4,7 @@ namespace AFSADDONWP\Base;
 /**
  * Class for registering the plugin admin scripts and styles.
  *
+ * @since: 2.0.0
  * @package AFSADDONWP
  */
 class AdminEnqueue {

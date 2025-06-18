@@ -6,6 +6,7 @@ use AFSADDONWP\Helpers\PluginConstants;
 /**
  * Class for registering the plugin scripts and styles.
  *
+ * @since: 2.0.0
  * @package AFSADDONWP
  */
 class Enqueue {

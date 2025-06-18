@@ -6,6 +6,7 @@ use AFSADDONWP\Callbacks\AdminAjaxHandlers\PluginInstallationCb;
 /**
  * Class for admin ajax handlers.
  *
+ * @since: 2.0.0
  * @package AFSADDONWP
  */
 class AdminAjaxHandlers {
