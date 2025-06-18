@@ -69,12 +69,6 @@ function init_afs_addon_wp() {
 		return;
 	}
 
-	// Check parent plugin activation status.
-	if ( ! ( Helpers\DependencyManager::get_product_activation_status() ) ) {
-		add_action( 'admin_notices', [ Helpers\DependencyManager::class, 'notice_missing_purchase_verification' ] );
-		return;
-	}
-
 	if ( class_exists( 'AFSADDONWP\\Init' ) ) {
 
 		// Check the required minimum version of the parent plugin.

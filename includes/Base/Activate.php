@@ -2,7 +2,7 @@
 namespace AFSADDONWP\Base;
 
 /**
- * Class for plucin activation.
+ * Class for plugin activation.
  *
  * @since: 2.0.0
  * @package AFSADDONWP
