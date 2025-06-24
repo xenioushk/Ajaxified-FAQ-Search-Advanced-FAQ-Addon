@@ -1,7 +1,7 @@
 {
   "name": "ajaxified-faq-search",
-  "version": "2.0.0",
-  "description": "",
+  "version": "2.1.1",
+  "description": "Integrate a sticky search to get FAQ quickly and efficiently.",
   "main": "index.js",
   "scripts": {
     "build": "wp-scripts build",

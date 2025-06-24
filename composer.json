@@ -1,6 +1,6 @@
 {
   "name": "xenioushk/ajaxified-faq-search",
-  "description": "FAQ Search is an add-on specifically designed for the BWL Advanced FAQ Manager plugin",
+  "description": "Integrate a sticky search to get FAQ quickly and efficiently.",
   "type": "project",
   "autoload": {
     "psr-4": {

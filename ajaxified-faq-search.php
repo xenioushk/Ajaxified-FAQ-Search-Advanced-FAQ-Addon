@@ -4,7 +4,7 @@
  * Plugin URI: https://bluewindlab.net/portfolio/ajaxified-faq-search-advanced-faq-addon/
  * Description: Integrate a sticky search to get FAQ quickly and efficiently.
  * Author: BlueWindLab
- * Version: 2.1.0
+ * Version: 2.1.1
  * Author URI: https://bluewindlab.net
  * WP Requires at least: 6.0+
  * Text Domain: afs-addon

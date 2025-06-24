@@ -49,7 +49,7 @@ class DependencyManager {
 	private static function set_urls() {
 		self::$baf_url         = "<strong><a href='https://1.envato.market/baf-wp' target='_blank'>BWL Advanced FAQ Manager</a></strong>";
 		self::$baf_license_url = "<strong><a href='" . admin_url( 'edit.php?post_type=bwl_advanced_faq&page=baf-license' ) . "'>BWL Advanced FAQ Manager license</a></strong>";
-		self::$addon_title     = '<strong>FAQ Tab For WooCommerce For BWL Advanced FAQ Manager</strong>';
+		self::$addon_title     = '<strong>Ajaxified FAQ Search</strong>';
 	}
 
 	/**
