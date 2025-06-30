@@ -12,15 +12,14 @@ Addon also brings **extensive option panel** that allows you to configure search
 
 ## Addon requirements
 
-You need to install [BWL Advanced FAQ Manager Plugin](https://1.envato.market/baf-wp) to use "FAQ Tab For WooCommerce - Advanced FAQ Addon". Minimum version **1.6.5** required.
+You need to install [BWL Advanced FAQ Manager Plugin](https://1.envato.market/baf-wp) to use "Ajaxified FAQ Search - Advanced FAQ Addon". Minimum version **3.0.0** required.
 
-You need at least WordPress version 4.8+ installed for this plugin to work properly. It is strongly recommended that you always use the latest stable version of WordPress to ensure all known bugs and security issues are fixed.
+You need at least WordPress version 6.0+ installed for this plugin to work properly. It is strongly recommended that you always use the latest stable version of WordPress to ensure all known bugs and security issues are fixed.
 
 ## Technical requirements
 
-- WordPress 5.6 or greater.
-- PHP version 7.4 or greater.
-- MySQL version 5.5.51 or greater.
+- WordPress 6.0 or greater.
+- PHP version 8.2 or greater.
 
 ## Change log
 
@@ -29,4 +28,4 @@ You need at least WordPress version 4.8+ installed for this plugin to work prope
 ## Acknowledgement
 
 - [bluewindlab.net](https://bluewindlab.net)
-- [BWL KB Manager WordPress plugin](https://1.envato.market/baf-wp)
+- [BWL Advanced FAQ Manager WordPress plugin](https://1.envato.market/baf-wp)

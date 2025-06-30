@@ -20,12 +20,17 @@ before_script:
 
 build:
   stage: build
-  image: node:lts
+  image: node:18
   tags: [ci, devops]
   only: [staging, production]
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+      - vendor/
   script:
     - echo "⚙️ Building the app."
-    - composer install --no-dev --optimize-autoloader
+    - composer install --prefer-dist --no-dev --no-progress --no-interaction
     - nvm use
     - npm install
     - npm run build

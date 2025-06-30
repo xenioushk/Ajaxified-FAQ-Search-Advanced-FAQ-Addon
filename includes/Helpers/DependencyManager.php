@@ -56,8 +56,8 @@ class DependencyManager {
 	 * Set the plugin dependency constants.
 	 */
 	private static function set_dependency_constants() {
-		define( 'AFSADDONWP_MIN_BAF_VERSION', '2.2.0' );
-		define( 'AFSADDONWP_MIN_PHP_VERSION', '7.0' );
+		define( 'AFSADDONWP_MIN_BAF_VERSION', '3.0.0' );
+		define( 'AFSADDONWP_MIN_PHP_VERSION', '8.2' );
 	}
 
 	/**
